@@ -232,3 +232,8 @@ img.profile-pic.right {
 .tadpole-searchbar-background {
     background-color: #f15353 !important;
 }
+
+.selected-category {
+    background-color: #fff !important;
+    color: #f15353 !important;
+}
