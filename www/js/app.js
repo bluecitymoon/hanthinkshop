@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.datacontrolle
 
             if (loggedUser && loggedUser.token && customer && customer.ip) {
 
-                $state.go('tab.chats');
+                $state.go('tab.home');
             } else {
                 $state.go('sign-in');
             }
@@ -82,6 +82,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.datacontrolle
                     }
                 }
             })
+            .state('tab.cart', {
+                url: '/shopcart',
+                views: {
+                    'tab-cart': {
+                        templateUrl: 'templates/tab-shopcart.html',
+                        controller: 'ShopCartCtrl'
+                    }
+                }
+            })
+
             // Each tab has its own nav history stack:
 
             .state('tab.reporttypes', {

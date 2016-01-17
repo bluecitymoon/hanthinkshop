@@ -30,6 +30,10 @@ angular.module('starter.controllers', ['ionic-datepicker'])
         };
     })
 
+    .controller('ShopCartCtrl', function($scope, $state) {
+
+    })
+
     .controller('LoginCtrl', function ($scope, AuthenticationService, $state, $rootScope, $ionicPopup, UtilService, StorageService, $ionicHistory) {
 
     var customer =  StorageService.getObject("customer_info");

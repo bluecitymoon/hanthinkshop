@@ -1,0 +1,62 @@
+<ion-view view-title="购物车" cache-view="false" class="calm">
+  <ion-nav-bar class="bar-stable" align-title="center">
+
+    <ion-nav-buttons side="left">
+      <button class="button button-clear" ng-click="showPublishDialog()">
+        <i class='icon balanced ion-android-notifications-none'></i>
+      </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-clear item-avatar-toolbar" ng-click="showUserCenter()">
+        <img ng-src="{{userAvatar}}">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+
+  <ion-content>
+
+    <div class="padding">
+      <ti-segmented-control on-select="filterChatsByType($index)">
+        <ti-segmented-control-button class="button-stable" title="'消息'" selected></ti-segmented-control-button>
+
+        <ti-segmented-control-button class="button-stable" title="'审批'"></ti-segmented-control-button>
+
+        <ti-segmented-control-button class="button-stable" title="'公告'"></ti-segmented-control-button>
+      </ti-segmented-control>
+    </div>
+
+    <ion-list>
+
+        <ion-item class="item-avatar item-icon-right" ng-repeat="chat in filterChats | orderBy: 'xuhao' " type="item-text-wrap" ng-click="showSingleChatList(chat)">
+          <img ng-src="{{chat.url1}}">
+
+          <span class="badge badge-assertive" ng-if="chat.xsl > 0">{{chat.xsl}}</span>
+
+          <h2>{{chat.fsr}}</h2>
+          <p>{{chat.zxxiaoxi}}</p>
+
+        </ion-item>
+
+    </ion-list>
+
+    <div class="list" ng-if="!filterChats || filterChats.length == 0" style="vertical-align: middle !important;">
+      <br><br><br><br><br><br>
+      <div class="row">
+        <div class="col col-25"></div>
+        <div class="col col-50">
+
+        </div>
+        <div class="col col-25"></div>
+      </div>
+      <div class="row" style="margin-top: 1rem;">
+        <div class="col col-25"></div>
+        <div class="col col-50" style="text-align: center; color: #D8D8D8; font-size: 1rem">
+          暂无商品
+        </div>
+        <div class="col col-25"></div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
