@@ -1,0 +1,92 @@
+<ion-view view-title="{{title}}">
+
+    <ion-nav-buttons side="left">
+        <div class="button button-clear" ng-click="goToDataIndexPage()">
+          <i class="ion-ios-close-empty assertive icon button-large"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right" ng-show="tableDeinination.zibiaogeshi && tableDeinination.zibiaogeshi.length > 0">
+        <div class="button button-clear" ng-click="toggleDetailCreationPage()">
+          <i class="ion-ios-plus-outline balanced icon button-large"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-content class="pending">
+
+      <div ng-show="templateLoaded">
+
+        <ion-list>
+
+            <div class="item item-input" ng-repeat="condition in tableDeinination.zhubiaogeshi | orderBy: 'xuhao'">
+                <span class="input-label">{{condition.mingcheng}} &nbsp;<i class="ion ion-alert assertive" ng-show="condition.shifoubilu"></i></span>
+
+                <input name="condition.mingcheng" ng-show="condition.sjleixing != 'date'" type="text" ng-required="condition.shifoubilu" ng-model="condition.morenzhi" placeholder="{{condition.mingcheng}}">
+
+                <ionic-datepicker ng-show="condition.sjleixing == 'date'" input-obj="datepickerObject">
+                  <button class="button button-clear button-positive" ng-click="openDateDialog(condition)">
+                    <span ng-show="!condition.morenzhi">选择日期</span>
+                    {{condition.morenzhi | date:'yyyy-MM-dd'}}
+                  </button>
+                </ionic-datepicker>
+                <button class="button button-clear" ng-click="openAutoComplete(condition, 'Father')" style="margin-right: 0.8em"
+                        ng-show="condition.cankaodangan"><i class="icon ion-ios-search-strong positive"></i></button>
+
+            </div>
+
+          <label class="item item-input" ng-repeat="singleTotal in total">
+            <span class="input-label">{{singleTotal.description}}合计</span>
+
+            <b style="color: #A00000">{{singleTotal.value}}</b>
+
+          </label>
+
+        </ion-list>
+        <br>
+        <div ng-show="childTableData.length > 0" delegate-handle="detailScroll">
+            <div class="item item-divider" style="text-align: center">
+                详情列表
+            </div>
+
+            <ion-list ng-repeat="childDefineArray in childTableData" style="height: 2em">
+                <div> <!-- ng-click="toggleDetailCreationPage(childDefineArray)" -->
+                    <hr>
+                    <ion-item ng-repeat="child in childDefineArray" ng-show="child.xianshi">
+                      {{child.mingcheng}}
+                      <span class="item-note">
+                      {{child.morenzhi}}
+                      </span>
+                    </ion-item>
+                </div>
+            </ion-list>
+
+        </div>
+
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="saveData()">
+                提交
+            </button>
+        </div>
+
+      </div>
+
+      <div class="list" ng-if="!templateLoaded" style="vertical-align: middle !important;">
+        <br><br><br><br><br><br>
+        <div class="row">
+          <div class="col col-25"></div>
+          <div class="col col-50">
+
+          </div>
+          <div class="col col-25"></div>
+        </div>
+        <div class="row" style="margin-top: 1rem;">
+          <div class="col col-25"></div>
+          <div class="col col-50" style="text-align: center; color: #D8D8D8; font-size: 1rem">
+            正在加载模板
+          </div>
+          <div class="col col-25"></div>
+        </div>
+      </div>
+    </ion-content>
+
+</ion-view>

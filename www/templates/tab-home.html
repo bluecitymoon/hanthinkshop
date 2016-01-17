@@ -1,0 +1,63 @@
+<ion-view title="商城">
+
+  <ion-nav-title>
+    <div class="item item-input-inset tadpole-searchbar-background">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="商品名称" ng-model="contact.searchingKeyword" ng-click="goSeachIndexPage()">
+      </label>
+    </div>
+  </ion-nav-title>
+
+  <ion-nav-bar class="bar-assertive">
+    <ion-nav-buttons side="left" class="button button-clear">
+
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+
+    <ion-slide-box does-continue="true" auto-play="true" slide-interval="2000">
+      <ion-slide ng-repeat="ad in ads" ui-sref="{{ad}}">
+        <img class="slide-zoom" ng-src="{{ad}}">
+      </ion-slide>
+    </ion-slide-box>
+
+    <!--collection-item-height="itemHeight"-->
+    <ion-item collection-repeat="category in categories" class="tadpole-noborder" collection-item-width="'20%'" style="text-align: center">
+      <a class="button button-clear" ng-href="#/searchreport/{{type.id}}">
+        <i class="{{category.icon}} {{category.color}}"></i>
+      </a>
+      <br>
+      {{category.name}}
+
+    </ion-item>
+
+    <div class="row row-wrap">
+      <div class="col col-50" ng-repeat="product in highlightProducts">
+        <div class="card card-facebook margin-0">
+          <div class="item item-avatar-center">
+            <img ng-src="{{ product.pic }}"/>
+
+            <h2>{{ product.productName }}</h2>
+
+            <p>{{ product.c }}</p>
+          </div>
+          <div class="item item-divider">
+            {{ item.people }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!--<ion-item collection-repeat="product in highlightProducts" collection-item-width="'50%'" style="text-align: center">-->
+      <!--<a class="button button-clear">-->
+        <!--<i class="{{product.pic}} {{product.c}}"></i>-->
+      <!--</a>-->
+      <!--<br>-->
+      <!--{{product.productName}}-->
+
+    <!--</ion-item>-->
+
+  </ion-content>
+</ion-view>

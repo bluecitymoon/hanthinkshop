@@ -1,0 +1,77 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view view-title="{{currentTask.kehu}}" cache-view="false">
+
+  <ion-nav-buttons side="left">
+   <!-- <button class="button" ng-click="goBack()"><i class="icon ion-android-arrow-back"></i></button> -->
+    <button ng-show="flag.isTempWork" class="button button-clear" ng-click="goBack()"><i class="ion-ios-close-empty assertive icon button-large"></i></button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="takePicture()">
+      <i class="icon ion-ios-camera button-large calm-900"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+
+        <label class="item item-input">
+          <span class="input-label">公司名称</span>
+          <input type="text" ng-model="currentTask.kehu" placeholder="公司名称">
+
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">地址</span>
+          <input type="text" ng-model="additionalTaskInfo.address" placeholder="公司地址">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">拜访日期</span>
+
+          <p>{{currentTask.riqi}}</p>
+
+        </label>
+
+        <label class="item item-toggle">
+
+          <span class="input-label">已完成</span>
+
+          <label class="toggle toggle-positive">
+            <input type="checkbox" ng-model="additionalTaskInfo.finished">
+
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+
+
+        </label>
+
+        <label class="item item-input">
+
+          <span class="input-label">备注</span>
+          <input type="text" ng-model="additionalTaskInfo.comments" placeholder="在此输入备注">
+
+        </label>
+
+        <div class="padding" style="border-radius: .5em">
+          <div ng-style="taskImageStyle">
+        </div>
+
+      </div>
+
+        <div class="padding">
+          <button class="button button-calm button-block" ng-click="submitTask(task)">
+            执行
+          </button>
+        </div>
+
+    </div>
+  </ion-content>
+</ion-view>

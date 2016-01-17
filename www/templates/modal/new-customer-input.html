@@ -1,0 +1,50 @@
+<ion-modal-view>
+
+    <ion-header-bar class="bar-stable">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeMessageDetailDialog()">取消</button>
+        </div>
+        <h1 class="title">新建客户</h1>
+        <div class="buttons">
+
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+
+          <div class="padding">
+            <div class="item item-input">
+                <span class="input-label">简称</span>
+
+                <input type="text" ng-model="newCustomer.shortName" placeholder="简称">
+            </div>
+            <div class="item item-input">
+              <span class="input-label">全称</span>
+
+              <input type="text" ng-model="newCustomer.fullName" placeholder="全称">
+            </div>
+            <div class="item item-input">
+              <span class="input-label">地址</span>
+
+              <input type="text" ng-model="newCustomer.address" placeholder="地址">
+            </div>
+            <div class="item item-input">
+              <span class="input-label">电话</span>
+
+              <input type="text" ng-model="newCustomer.phoneNumber" placeholder="电话">
+            </div>
+            <div class="item item-input">
+              <span class="input-label">联系人</span>
+
+              <input type="text" ng-model="newCustomer.contactor" placeholder="联系人">
+            </div>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="saveCustomer()">
+              提交
+            </button>
+          </div>
+        </ion-list>
+    </ion-content>
+
+</ion-modal-view>

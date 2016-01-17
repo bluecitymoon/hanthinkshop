@@ -1,0 +1,103 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-modal-view cache-view="true">
+
+  <ion-header-bar class="bar-stable">
+
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeMessageDetailDialog()"><i class="ion-ios-close-empty assertive icon button-large"></i></button>
+    </div>
+    <h1 class="title">新建任务</h1>
+    <div class="buttons">
+
+      <!--
+      <button class="button button-clear" ng-click="takePicture()"><i class="icon ion-ios-camera button-large royal-900"></i>
+      </button> -->
+    </div>
+
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="list">
+
+      <form>
+
+
+        <label class="item item-input">
+          <span class="input-label">任务类型</span>
+
+          <input type="text" ng-model="task.type" placeholder="任务类型">
+
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">任务内容</span>
+
+          <input type="text" ng-model="task.content" placeholder="任务内容">
+
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">拜访日期</span>
+
+          <ionic-datepicker input-obj="datepickerObject">
+            <button class="button button-royal button-clear" ng-click="openDateDialog()"> {{datepickerObject.inputDate | date:'yyyy年MM月dd日'}}</button>
+          </ionic-datepicker>
+
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">执行人</span>
+
+          <p style="width: 50%">{{task.user}}</p>
+          <button class="button button-clear" ng-click="openSelectUserPopupInCreateJobPage()" style="margin-right: 0.8em"><i class="button-large icon ion-ios-personadd-outline positive"></i></button>
+
+        </label>
+
+
+
+        <label class="item item-input">
+          <span class="input-label">客户名称</span>
+
+          <p style="width: 50%">请选择客户(可多选)</p>
+          <button class="button button-clear" ng-click="openCustomerSelectionDialog()" style="margin-right: 0.8em"><i class="button-large icon ion-ios-people-outline positive"></i></button>
+
+        </label>
+
+
+        <ion-list ng-repeat="person in task.customers">
+          <div class="row">
+            <div class="col col-33">
+
+            </div>
+
+            <div class="col col-67">
+              <b class="positive">{{person.kehu}}</b>
+            </div>
+          </div>
+        </ion-list>
+
+        <!--
+        <label class="item item-input">
+
+          <span class="input-label">备注</span>
+          <input type="text" ng-model="task.comments" placeholder="在此输入备注">
+
+        </label>
+
+        -->
+
+        <div class="padding">
+          <button type="submit" class="button button-positive button-block" ng-click="submitTask()">
+            提交新的任务
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-modal-view>

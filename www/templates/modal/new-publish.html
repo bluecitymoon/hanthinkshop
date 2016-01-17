@@ -1,0 +1,25 @@
+<ion-modal-view>
+
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closePublishDialog()">取消</button>
+    </div>
+    <h1 class="title">发表公告</h1>
+
+    <div class="buttons">
+      <button ng-disabled=" !publish.comments || publish.comments === ''" class="button button-clear" ng-click="submitPublish()">提交</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <label style="height: 100%;">
+          <textarea rows="10" style="width: 100% !important;" ng-model="publish.comments" value="" placeholder="此处输入公告内容"
+                  required minlength="1" maxlength="2000" msd-elastic="\n"></textarea>
+        </label>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+</ion-modal-view>
