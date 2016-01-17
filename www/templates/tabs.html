@@ -5,23 +5,19 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top  tabs-color-active-balanced">
 
-  <ion-tab title="消息" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
+    <ion-tab title="商城" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/home">
+        <ion-nav-view name="tab-home"></ion-nav-view>
+    </ion-tab>
 
-  <ion-tab title="数据" icon-off="ion-ios-pie-outline" icon-on="ion-ios-pie" href="#/tab/reporttypes">
-    <ion-nav-view name="tab-reporttypes"></ion-nav-view>
-  </ion-tab>
+    <ion-tab title="消息" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble" href="#/tab/chats">
+        <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Chats Tab -->
-  <ion-tab title="数据" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/tab/data">
-    <ion-nav-view name="tab-data"></ion-nav-view>
-  </ion-tab>
+    <ion-tab title="数据" icon-off="ion-ios-pie-outline" icon-on="ion-ios-pie" href="#/tab/reporttypes">
+        <ion-nav-view name="tab-reporttypes"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Account Tab -->
-  <ion-tab title="外勤" icon-off="ion-ios-location-outline" icon-on="ion-ios-location" href="#/tab/outsidework">
-    <ion-nav-view name="tab-outsidework"></ion-nav-view>
-  </ion-tab>
-
-
+    <ion-tab title="购物车" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" badge="2" badge-style="badge-balanced" href="#/tab/chats">
+        <ion-nav-view name="tab-cart"></ion-nav-view>
+    </ion-tab>
 </ion-tabs>

@@ -73,6 +73,15 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.datacontrolle
                 templateUrl: 'templates/tabs.html'
             })
 
+            .state('tab.home', {
+                url: '/home',
+                views: {
+                    'tab-home': {
+                        templateUrl: 'templates/tab-home.html',
+                        controller: 'HomeCtrl'
+                    }
+                }
+            })
             // Each tab has its own nav history stack:
 
             .state('tab.reporttypes', {
