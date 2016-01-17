@@ -11,47 +11,36 @@ angular.module('starter.controllers', ['ionic-datepicker'])
             }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
                 id: 6,
                 name: '书籍'
-            },
-            {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
-                id: 6,
-                name: '书籍'
-            },
-
-
+            }
         ];
 
+        $scope.detailCategories = [];
         $scope.selectedCategory = {};
         $scope.screenHeight = $window.innerHeight;
         $scope.screenWidth = parseInt($window.innerWidth / 3);
 
         $scope.clickFirstLevelCategory = function (category, index) {
-
-            var heightToTop = 52 * (index - 6);
-            angular.forEach($scope.categories, function(value, index) {
-               if (value.active) value.active = false;
-            });
+            clearSelectionStatus();
 
             category.active = true;
 
             $scope.selectedCategory = category;
 
-            $ionicScrollDelegate.scrollTo(0, heightToTop, true);
+            var middleIndex = parseInt(parseInt($window.innerHeight / 52) / 2);
+
+            var heightToTop = 52 * (index - middleIndex);
+            if (heightToTop > 0) {
+                $ionicScrollDelegate.scrollTo(0, heightToTop, true);
+            }
+
+            //query items
         };
+
+        function clearSelectionStatus() {
+            angular.forEach($scope.categories, function (value, index) {
+                if (value.active) value.active = false;
+            });
+        }
     })
 
     .controller('ShopCartCtrl', function ($scope, $state) {

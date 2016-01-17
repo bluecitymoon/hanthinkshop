@@ -18,7 +18,7 @@
     <ion-content>
 
         <div class="row" style="padding: 0px !important;">
-            <div class="col" style="background-color: rgba(200, 200, 200, 0.4) !important; max-width: 27%">
+            <div class="col" style="background-color: rgba(239, 239, 239, 0.4) !important; max-width: 25%">
                 <ion-scroll zooming="false" direction="y" style="width: {{screenWidth}}px; height: {{screenHeight}}px; ">
                     <ion-list>
 
@@ -33,17 +33,12 @@
                 <h1>{{selectedCategory.name}}</h1>
 
                 <div class="row row-wrap">
-                    <div class="col col-50" ng-repeat="product in highlightProducts">
-                        <div class="card card-facebook margin-0">
+                    <div class="col col-50" ng-repeat="detailCategory in detailCategories">
+                        <div class="card">
                             <div class="item item-avatar-center">
-                                <img ng-src="{{ product.pic }}"/>
+                                <img ng-src="{{ detailCategory.image }}"/>
 
-                                <h2>{{ product.productName }}</h2>
-
-                                <p>{{ product.c }}</p>
-                            </div>
-                            <div class="item item-divider">
-                                {{ item.people }}
+                                <p>{{ detailCategory.name }}</p>
                             </div>
                         </div>
                     </div>
