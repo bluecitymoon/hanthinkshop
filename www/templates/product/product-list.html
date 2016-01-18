@@ -28,18 +28,28 @@
 
                     <br>
 
-                    <div class="text-center no-border" ng-click="showProductDetail(product)" style="text-overflow: ellipsis !important;">
-                        <img ng-src="{{ product.image }}" style="width : {{productWidth}}px; height: auto;"/>
+                    <div class="text-center no-border" style="text-overflow: ellipsis !important;">
+                        <img ng-src="{{ product.image }}" style="width : {{productWidth}}px; height: auto;" ng-click="showProductDetail(product)"/>
 
-                        <div class="row item">
+                        <div class="row item" ng-click="showProductDetail(product)">
                             <p>{{ product.name }}</p>
                         </div>
                         <div class="row row-center">
-
                             <h4 class="assertive">¥{{product.price}}</h4>
+                            <div class="col ">
 
-                            <div class="col text-right">
-                                <button class="button-light button-small"><b>加入购物车</b></button>
+                                <div class="row text-right">
+                                    <button class="button-light button-small" style="width: 25px;"><i class="icon ion-minus-round"></i></button>
+                                    <input ng-model="product.count" type="text" style="width: 25px; border-top: solid; border-bottom: solid; text-align: center;"/>
+                                    <button class="button-light button-small" style="width: 25px;"><i class="icon ion-plus-round"></i> </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row row-center">
+                            <div class="col text-center">
+                                <button class="button button-balanced button-small"><b>加入购物车</b></button>
                             </div>
                         </div>
 

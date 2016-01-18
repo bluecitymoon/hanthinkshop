@@ -23,7 +23,7 @@ angular.module('starter.controllers', ['ionic-datepicker'])
         ];
         $scope.selectedCategory = {};
         $scope.screenHeight = $window.innerHeight;
-        $scope.screenWidth = parseInt($window.innerWidth / 3);
+        $scope.screenWidth = parseInt($window.innerWidth * 0.25);
 
         $scope.clickFirstLevelCategory = function (category, index) {
 
