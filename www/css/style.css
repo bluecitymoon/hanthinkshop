@@ -247,3 +247,64 @@ img.profile-pic.right {
 .background-gary {
     background-color: #e1e1e1 !important;
 }
+
+.cart-concern-btm-fixed {
+    position: fixed;
+    left: 0;
+    bottom: 0 !important;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.four-column .concern-cart {
+    width: 42%;
+}
+.concern-cart {
+    background-color: rgba(0,0,0,.8);
+}
+.concern-cart, .action-list {
+    float: left;
+}
+
+.concern-cart a {
+    color: #d4d4d4;
+    font-size: 10px;
+}
+.concern-cart a, .action-list a {
+    width: 50%;
+}
+.concern-cart a, .action-list a {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+}
+
+.four-column .action-list {
+    width: 58%;
+}
+.concern-cart, .action-list {
+    float: left;
+}
+
+.cart-car-icn .btm-act-icn {
+    background-position: 0 -23px;
+    background-size: 50px 50px;
+}
+
+em.btm-act-icn {
+    width: 25px;
+    height: 24px;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 8px;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.color-black-background {
+    background-color: rgba(0,0,0,.8);
+}

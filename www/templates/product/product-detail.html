@@ -3,6 +3,10 @@
         <ion-nav-buttons side="left" class="button button-clear">
             <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-arrow-left"></i> </button>
         </ion-nav-buttons>
+        <ion-nav-buttons side="right" class="button button-clear">
+
+            <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-cart-outline"></i> </button>
+        </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-title style="width: 80% !important;">
         <div class="item">
@@ -18,19 +22,37 @@
 
     <ion-content>
 
-        <ion-slide-box does-continue="true" auto-play="true" slide-interval="10000">
-            <ion-slide ng-repeat="image in product.images">
-                <img class="slide-zoom" ng-src="{{image}}" style="height: auto; width: {{screenWidth}}px;">
-            </ion-slide>
+        <div>
 
-        </ion-slide-box>
+            <ion-slide-box does-continue="true" auto-play="true" slide-interval="10000">
+                <ion-slide ng-repeat="image in product.images">
+                    <img class="slide-zoom" ng-src="{{image}}" style="height: auto; width: {{screenWidth}}px;">
+                </ion-slide>
 
-        <div class="padding" style="border-bottom: 1px; border-color: #A00000">
+            </ion-slide-box>
 
-            {{product.name}}
+            <div class="padding" style="border-bottom: 1px; border-color: #A00000">
 
-            <h4 class="assertive">¥{{product.price}}</h4>
+                {{product.name}}
 
+                <h3 class="assertive">¥{{product.price}}</h3>
+
+            </div>
+            <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
+
+            <div class="padding">
+                Nothing special in here. We got a small list of images, which will take images from a scope array and a click event which calls showImages with the index of the image in the array. You will see why we pass this parameter soon. Below the image scroll list we got a simple button which shall start our video. Obviously there could be your thumbnail images from your captured movies, but for the simplicity I will just open a local file.
+
+                ADDING THE IMAGE POPOVER
+                The HTML is fine, let’s go to your app.js and add the controller we assigned to our ion-content tag. Inside our controller we need the image array with the source to each image, and the showImages function, so add:
+            </div>
+
+            <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
+
+            <div ng-repeat="image in product.detailImages">
+                <img ng-src="{{image}}" style="height: auto; width: {{screenWidth}}px; margin-bottom: -5px !important;">
+            </div>
+            <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
         </div>
 
         <div class="list" ng-if="loading" style="vertical-align: middle !important;">
@@ -54,4 +76,15 @@
 
         </div>
     </ion-content>
+    <div class="bar bar-footer">
+        <div class="row">
+            <div class="col-50">
+                <button class="button button-balanced" style="width: 99%" ng-click="sumbitOrder()"><b class="color-font-white">加入购物车</b></button>
+            </div>
+            <div class="col-50">
+                <button class="button button-assertive" style="width: 99%; margin-left: 0.5em;" ng-click="sumbitOrder()"><b class="color-font-white">立即购买</b></button>
+            </div>
+        </div>
+
+    </div>
 </ion-view>
