@@ -34,7 +34,7 @@
               <div class="row row-wrap">
                     <div class="col col-33" ng-repeat="detailCategory in detailCategories">
 
-                            <div class="text-center no-border">
+                            <div class="text-center no-border" ng-click="goProductListPage(detailCategory)">
                                 <img ng-src="{{ detailCategory.image }}" style="width : 62px; height: 62px; border: 0;"/>
 
                                 <p style="font-size: smaller">{{ detailCategory.name }}</p>

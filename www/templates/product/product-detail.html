@@ -1,0 +1,57 @@
+<ion-view title="商品详情">
+    <ion-nav-bar class="button-bar-stable">
+        <ion-nav-buttons side="left" class="button button-clear">
+            <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-arrow-left"></i> </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-title style="width: 80% !important;">
+        <div class="item">
+                <ti-segmented-control on-select="showProductDetailByTitle($index)">
+
+                    <ti-segmented-control-button class="button-assertive" title="'商品'" selected></ti-segmented-control-button>
+                    <ti-segmented-control-button class="button-assertive" title="'参数'"></ti-segmented-control-button>
+
+                </ti-segmented-control>
+
+        </div>
+    </ion-nav-title>
+
+    <ion-content>
+
+        <ion-slide-box does-continue="true" auto-play="true" slide-interval="10000">
+            <ion-slide ng-repeat="image in product.images">
+                <img class="slide-zoom" ng-src="{{image}}" style="height: auto; width: {{screenWidth}}px;">
+            </ion-slide>
+
+        </ion-slide-box>
+
+        <div class="padding" style="border-bottom: 1px; border-color: #A00000">
+
+            {{product.name}}
+
+            <h4 class="assertive">¥{{product.price}}</h4>
+
+        </div>
+
+        <div class="list" ng-if="loading" style="vertical-align: middle !important;">
+
+            <br><br><br><br><br><br>
+
+            <div class="row row-center" style="margin-top: 1rem; color: #D8D8D8; font-size: 1rem; ">
+                <div class="col text-center">
+                    <ion-spinner icon="lines" class="spinner-balanced"></ion-spinner>
+                </div>
+
+            </div>
+            <br>
+
+            <div class="row row-center" style="margin-top: 1rem; color: #D8D8D8; font-size: 1rem; ">
+                <div class="col text-center">
+                    商品信息正在加载...
+                </div>
+
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

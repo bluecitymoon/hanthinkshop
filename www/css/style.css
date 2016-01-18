@@ -237,3 +237,13 @@ img.profile-pic.right {
     background-color: #fff !important;
     color: #f15353 !important;
 }
+
+.scroll-imgs {
+    text-align: center;
+    background: #fff!important;
+    height: 320px;
+}
+
+.background-gary {
+    background-color: #e1e1e1 !important;
+}
