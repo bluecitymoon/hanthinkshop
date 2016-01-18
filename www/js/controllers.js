@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 
     .controller('HomeCtrl', function ($scope, $state, $window, $ionicScrollDelegate) {
         $scope.categories = [
-            {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
+            {id: 1, name: '潮流女装'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
                 id: 6,
                 name: '书籍'
             }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
@@ -14,7 +14,13 @@ angular.module('starter.controllers', ['ionic-datepicker'])
             }
         ];
 
-        $scope.detailCategories = [];
+        $scope.detailCategories = [
+            {name : '毛呢大衣', image : 'http://m.360buyimg.com/mobile/s100x100_jfs/t2305/354/925073102/2343/4c4c7033/563341f8Nd8edf0fc.jpg'},
+            {name : '羽绒服', image : 'http://m.360buyimg.com/mobile/s100x100_jfs/t2539/348/30382811/8390/15365285/56334287Nb3f282d0.jpg'},
+            {name : '针织衫', image : 'http://m.360buyimg.com/mobile/s100x100_jfs/t1966/126/905412055/7275/8b097549/563342e4N096f101d.jpg'},
+            {name : '连衣裙', image : 'http://m.360buyimg.com/mobile/s100x100_jfs/t2446/159/924672446/2448/2699d176/56334334N29f3d85d.jpg'},
+            {name : '棉服', image : 'http://m.360buyimg.com/mobile/s100x100_jfs/t1975/196/891084911/3889/8bd63534/56334380Ne4a77479.jpg'}
+        ];
         $scope.selectedCategory = {};
         $scope.screenHeight = $window.innerHeight;
         $scope.screenWidth = parseInt($window.innerWidth / 3);
@@ -31,6 +37,8 @@ angular.module('starter.controllers', ['ionic-datepicker'])
             var heightToTop = 52 * (index - middleIndex);
             if (heightToTop > 0) {
                 $ionicScrollDelegate.scrollTo(0, heightToTop, true);
+            } else {
+                $ionicScrollDelegate.scrollTop();
             }
 
             //query items

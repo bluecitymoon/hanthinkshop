@@ -19,6 +19,7 @@
 
         <div class="row" style="padding: 0px !important;">
             <div class="col" style="background-color: rgba(239, 239, 239, 0.4) !important; max-width: 25%">
+
                 <ion-scroll zooming="false" direction="y" style="width: {{screenWidth}}px; height: {{screenHeight}}px; ">
                     <ion-list>
 
@@ -30,18 +31,16 @@
             </div>
             <div class="col">
 
-                <h1>{{selectedCategory.name}}</h1>
+              <div class="row row-wrap">
+                    <div class="col col-33" ng-repeat="detailCategory in detailCategories">
 
-                <div class="row row-wrap">
-                    <div class="col col-50" ng-repeat="detailCategory in detailCategories">
-                        <div class="card">
-                            <div class="item item-avatar-center">
-                                <img ng-src="{{ detailCategory.image }}"/>
+                            <div class="text-center no-border">
+                                <img ng-src="{{ detailCategory.image }}" style="width : 62px; height: 62px; border: 0;"/>
 
-                                <p>{{ detailCategory.name }}</p>
+                                <p style="font-size: smaller">{{ detailCategory.name }}</p>
                             </div>
                         </div>
-                    </div>
+
                 </div>
 
             </div>
