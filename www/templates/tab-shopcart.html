@@ -23,21 +23,26 @@
                 <div class="item-divider-ios small-divider"></div>
                 <div class="item item-thumbnail-left">
 
-                    <img ng-src="{{product.image}}">
+                    <img ng-src="{{product.image}}" style="max-height: 150px !important; height: auto !important;">
 
                     <div class="row">
                         <div class="col-90">
 
-                            <p style="font-size: 0.8em">{{product.name}}</p>
+                            <p style="word-wrap: break-word; white-space: normal !important; font-size: .8em;" class="dark">{{product.name}}</p>
 
                             <div class="row">
-                                <p class="assertive" style="width: 30%; float : left">¥{{product.price}}</p>
+                                
+                                <div class="row" style="width: 70%; float : left">
+                                    <p class="assertive" style="width: 70%; float : left">¥{{product.price}}</p>
+                                    <p style="font-size: 6px">(单价)</p>
+                                </div>
 
-                                <div class="row" style="width: 70%; float : right">
-                                    <button class="button-light button-small counter-left"><i
+
+                                <div class="row row-center" style="width: 30%;">
+                                    <button class="button-light button-small counter-left text-right"><i
                                         class="icon ion-minus-round"></i></button>
                                     <input ng-model="product.count" type="text"
-                                           style="width: 2em; border-top: 1px; border-bottom: 1px; text-align: center;"/>
+                                           style="width: 2em; border-bottom: 2px solid #e1e1e1 !important; border-top: 2px solid #e1e1e1 !important; text-align: center;"/>
                                     <button class="button-light button-small counter-right"><i
                                         class="icon ion-plus-round"></i></button>
                                 </div>
@@ -46,8 +51,8 @@
 
                         </div>
                         <div class="col-10">
-                            <label class="checkbox checkbox-assertive" style="float: right">
-                                <input type="checkbox" checklist-model="selectedProducts" checklist-value="product.id">
+                            <label class="checkbox checkbox-assertive">
+                                <input type="checkbox" checklist-model="selectedProducts" checklist-value="product.id" style="float: right !important;">
                             </label>
                         </div>
                     </div>
@@ -55,9 +60,9 @@
                 </div>
 
                 <div style="padding-left: 10px !important; padding-right: 10px; padding-bottom: 10px; padding-top : -10px">
-                     <textarea class="stable-border" style="width: 100% !important; border-radius: 5px;"
+                     <textarea class="stable-border" style="width: 100% !important; border-radius: 5px; height: 5em;"
                                ng-model="input.message" value=""
-                               placeholder="您可以在此处留下您的留言"
+                               placeholder="您的留言"
                                required minlength="1" maxlength="1500" msd-elastic="\n">
                      </textarea>
 
