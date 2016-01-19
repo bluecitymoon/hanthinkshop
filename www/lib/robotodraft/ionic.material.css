@@ -853,7 +853,7 @@
 }
 */
 .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
-  border-radius: 50%; }
+  border-radius: 5px; }
 
 .tab-item.activated {
   height: calc(100% + 3px);

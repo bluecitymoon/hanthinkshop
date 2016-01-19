@@ -37,13 +37,11 @@
                         <div class="row row-center">
                             <h4 class="assertive">¥{{product.price}}</h4>
                             <div class="col ">
-
-                                <div class="row text-right">
-                                    <button class="button-light button-small" style="width: 25px;"><i class="icon ion-minus-round"></i></button>
-                                    <input ng-model="product.count" type="text" style="width: 25px; border-top: solid; border-bottom: solid; text-align: center;"/>
-                                    <button class="button-light button-small" style="width: 25px;"><i class="icon ion-plus-round"></i> </button>
+                                <div class="row" style="width: 70%; float : right">
+                                    <button class="button-light button-small counter-left"><i class="icon ion-minus-round"></i></button>
+                                    <input ng-model="product.count" type="text" style="width: 2em; border-top: 1px; border-bottom: 1px; text-align: center;"/>
+                                    <button class="button-light button-small counter-right"><i class="icon ion-plus-round"></i> </button>
                                 </div>
-
                             </div>
                         </div>
 
