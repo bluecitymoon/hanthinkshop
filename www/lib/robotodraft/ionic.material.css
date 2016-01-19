@@ -2593,8 +2593,8 @@ a {
 .button-bar-stable.activated,
 .bar-stable.activated,
 .stable-border.activated {
-  background-color: #E0E0E0;
-  color: #fff; }
+  background-color: #fff;
+  color: rgb(0,0,0); }
 
 /* Text Colors
 ==================================*/
