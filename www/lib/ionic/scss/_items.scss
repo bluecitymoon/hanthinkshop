@@ -163,9 +163,9 @@
 .item-content h5,
 .item-content h6,
 .item-content p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: initial;
+  text-overflow: initial;
+  white-space: initial;
 }
 
 // Linked list items

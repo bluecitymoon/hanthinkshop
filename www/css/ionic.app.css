@@ -5815,9 +5815,9 @@ ion-tabs.tabs-color-active-dark .tab-item {
 .item-content h5,
 .item-content h6,
 .item-content p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
+  overflow: initial;
+  text-overflow: initial;
+  white-space: initial; }
 
 a.item {
   color: inherit;
@@ -8770,8 +8770,7 @@ a.button {
   background-color: #f8f8f8; }
 
 .stable-border {
-  border: 1px solid #b2b2b2;
-}
+  border-color: #b2b2b2; }
 
 .positive, a.positive {
   color: #387ef5; }
