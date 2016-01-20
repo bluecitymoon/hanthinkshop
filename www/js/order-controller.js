@@ -1,6 +1,6 @@
-angular.module('starter.cart-controller', [])
+angular.module('starter.order-controller', [])
 
-    .controller('ShopCartCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
+    .controller('CreateOrderCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
 
         $scope.products = [
             {count : 20, price: 288, name : '美莱香 2015秋冬新款韩版加棉毛呢大衣女外套修身中长款羊毛呢子大衣加厚女装MW888 枣红色加棉 M', image : 'http://m.360buyimg.com/n8/jfs/t2557/184/1007246708/390166/530a5510/56800659N30321307.jpg!q70.jpg'},
@@ -21,8 +21,4 @@ angular.module('starter.cart-controller', [])
             $ionicHistory.goBack();
         };
 
-        $scope.createOrder = function() {
-            $state.go('new-order');
-        }
     });
-

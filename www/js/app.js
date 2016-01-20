@@ -12,23 +12,19 @@ var ServerRoot = '';
 var weekDaysList = ["六", "日", "一", "二", "三", "四", "五"];
 var monthList = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-controller', 'starter.datacontrollers','starter.outsideworkcontroller', 'starter.cart-controller', 'starter.services', 'ion-tree-list', 'checklist-model', 'angular.filter', 'ti-segmented-control'])
-
-    .constant('mapkey', 'f42572d0237047d15f2a6306b7e763b7')
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-controller', 'starter.datacontrollers','starter.outsideworkcontroller', 'starter.cart-controller', 'starter.order-controller', 'starter.services', 'ion-tree-list', 'checklist-model', 'angular.filter', 'ti-segmented-control'])
 
     .constant('HanthinkApiAddress', 'http://www.hanthink.cc:808/hanthinkapi/')
 
     .run(function($ionicPlatform, StorageService, $state) {
         $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
+
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
 
             }
             if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
 
@@ -115,6 +111,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-cont
                 url: '/product/:productid',
                 templateUrl: 'templates/product/product-detail.html',
                 controller: 'ProductDetailCtrl'
+
+            })
+
+            .state('new-order', {
+                url: '/createorder',
+                templateUrl: 'templates/pay/new-order.html',
+                controller: 'CreateOrderCtrl'
 
             })
 
