@@ -244,4 +244,40 @@ img.profile-pic.right {
     border-top: 1px solid #e1e1e1
 }
 
+.change-co {
+    background-color: #fffaf3;
+}
+.change-co {
+    background-color: #fffaf3;
+}
+.step1 {
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    top: 0;
+    background-color: #fff;
+    padding: 1.2em .625em 1.2em .625em;
+}
+.border-1px {
+    position: relative;
+}
 
+.step1 .s1-borderT {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAFCAIAAAACIXP3AAAAGXRFW…Ja6Ikr/Tan/eMRk6SqP6P9IJBhWNWfib+7YZTh/w98BBgA/7JRnu9VHPIAAAAASUVORK5CYII=) repeat-x;
+    background-size: 64px 3px;
+}
+
+.step1 .s1-borderB {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAFCAIAAAACIXP3AAAAGXRFW…Ja6Ikr/Tan/eMRk6SqP6P9IJBhWNWfib+7YZTh/w98BBgA/7JRnu9VHPIAAAAASUVORK5CYII=) repeat-x;
+    background-size: 64px 3px;
+}
