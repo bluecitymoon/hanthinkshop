@@ -285,3 +285,11 @@ img.profile-pic.right {
 .stable-border {
     border: 1px solid #b2b2b2;
 }
+
+.button-small-shop {
+
+    min-width: 20px;
+    min-height: 20px;
+    font-size: 10px;
+    line-height: 22px;
+}

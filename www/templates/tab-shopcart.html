@@ -25,29 +25,32 @@
                 <div class="item-divider-ios small-divider"></div>
                 <div class="item item-thumbnail-left">
 
-                    <img ng-src="{{product.image}}" style="max-height: 150px !important; height: auto !important;">
+                    <img ng-src="{{product.image}}" style="max-height: 150px !important; height: auto !important;" ng-click="showProductDetail(product)">
 
                     <div class="row">
                         <div class="col-90">
 
-                            <p style="word-wrap: break-word; white-space: normal !important; font-size: .8em;" class="dark">{{product.name}}</p>
+                            <p style="font-size: .8em;" ng-click="showProductDetail(product)">{{product.name}}</p>
+
+                            <div class="row" style="padding: 0px !important;">
+                                <div class="row-no-padding" style="width: 70%; float : left">
+                                    <p class="assertive" style="width: 70%; float : left">¥{{product.price}}</p>
+                                </div>
+                            </div>
 
                             <div class="row">
-
-                                <div class="row" style="width: 70%; float : left">
-                                    <p class="assertive" style="width: 70%; float : left">¥{{product.price}}</p>
-                                    <p style="font-size: 6px">(单价)</p>
-                                </div>
-
-                                <div class="row row-center" style="width: 30%;">
-                                    <button class="button-light button-small counter-left text-right"><i
+                                <div class="row row-center col-50">
+                                    <button class="button-clear button-small-shop counter-left text-right"><i
                                         class="icon ion-minus-round"></i></button>
                                     <input ng-model="product.count" type="text"
-                                           style="width: 2em; border-bottom: 2px solid #e1e1e1 !important; border-top: 2px solid #e1e1e1 !important; text-align: center;"/>
-                                    <button class="button-light button-small counter-right"><i
+                                           style="height: 24px; width: 2.5em; border-bottom: 2px solid #e1e1e1 !important; border-top: 2px solid #e1e1e1 !important; text-align: center;"/>
+                                    <button class="button-clear button-small-shop counter-right"><i
                                         class="icon ion-plus-round"></i></button>
                                 </div>
+                                <div class="text-right col-50">
+                                    <i class="icon ion-ios-trash-outline" style="font-size: 2em;"></i>
 
+                                </div>
                             </div>
 
                         </div>
