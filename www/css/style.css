@@ -293,3 +293,11 @@ img.profile-pic.right {
     font-size: 10px;
     line-height: 22px;
 }
+
+.product-detail-divider {
+    padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1; padding-left: 1em;
+}
+
+.counter-input {
+    height: 24px; width: 2.5em; border: 2px solid #e1e1e1 !important;  text-align: center;
+}

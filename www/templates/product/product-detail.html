@@ -5,24 +5,25 @@
         </ion-nav-buttons>
         <ion-nav-buttons side="right" class="button button-clear">
 
-            <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-cart-outline"></i> </button>
+            <button class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
         </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-nav-title style="width: 80% !important;">
-        <div class="item">
+    <ion-nav-title>
+        <div class="title title-center header-item">
+
+            商品详情
+                <!--
                 <ti-segmented-control on-select="showProductDetailByTitle($index)">
 
                     <ti-segmented-control-button class="button-assertive" title="'商品'" selected></ti-segmented-control-button>
                     <ti-segmented-control-button class="button-assertive" title="'参数'"></ti-segmented-control-button>
 
-                </ti-segmented-control>
+                </ti-segmented-control> -->
 
         </div>
     </ion-nav-title>
 
     <ion-content>
-
-        <div>
 
             <ion-slide-box does-continue="true" auto-play="true" slide-interval="10000">
                 <ion-slide ng-repeat="image in product.images">
@@ -38,7 +39,25 @@
                 <h3 class="assertive">¥{{product.price}}</h3>
 
             </div>
-            <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
+
+            <div class="item-divider-ios product-detail-divider">商品参数</div>
+
+            <ion-list>
+                <ion-item class="item-icon-right" style="height: 2em;">
+                    进深参数长度
+                    <span class="item-note">
+                    1871 cm
+                    </span>
+                </ion-item>
+                <ion-item class="item-icon-right">
+                    宽度
+                    <span class="item-note">
+                    1287 cm
+                    </span>
+                </ion-item>
+            </ion-list>
+
+            <div class="item-divider-ios product-detail-divider">商品描述</div>
 
             <div class="padding">
                 Nothing special in here. We got a small list of images, which will take images from a scope array and a click event which calls showImages with the index of the image in the array. You will see why we pass this parameter soon. Below the image scroll list we got a simple button which shall start our video. Obviously there could be your thumbnail images from your captured movies, but for the simplicity I will just open a local file.
@@ -47,13 +66,13 @@
                 The HTML is fine, let’s go to your app.js and add the controller we assigned to our ion-content tag. Inside our controller we need the image array with the source to each image, and the showImages function, so add:
             </div>
 
-            <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
+            <div class="item-divider-ios product-detail-divider">图片展示</div>
 
             <div ng-repeat="image in product.detailImages">
                 <img ng-src="{{image}}" style="height: auto; width: {{screenWidth}}px; margin-bottom: -5px !important;">
             </div>
             <div class="item-divider-ios" style="padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1"></div>
-        </div>
+
 
         <div class="list" ng-if="loading" style="vertical-align: middle !important;">
 
@@ -71,18 +90,20 @@
                 <div class="col text-center">
                     商品信息正在加载...
                 </div>
-
             </div>
 
         </div>
+
     </ion-content>
-    <div class="bar bar-footer">
+
+    <div class="bar bar-footer" style="opacity: 0.9">
+
         <div class="row">
             <div class="col-50">
-                <button class="button button-balanced" style="width: 99%" ng-click="sumbitOrder()"><b class="color-font-white">加入购物车</b></button>
+                <button class="button button-balanced" style="width: 99%" ng-click="addToShopCart(product)"><b class="color-font-white">加入购物车</b></button>
             </div>
             <div class="col-50">
-                <button class="button button-assertive" style="width: 99%; margin-left: 0.5em;" ng-click="sumbitOrder()"><b class="color-font-white">立即购买</b></button>
+                <button class="button button-assertive" style="width: 99%; margin-left: 0.5em;" ng-click="buyNow()"><b class="color-font-white">立即购买</b></button>
             </div>
         </div>
 

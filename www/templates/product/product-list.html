@@ -15,7 +15,7 @@
         </ion-nav-buttons>
         <ion-nav-buttons side="right" class="button button-clear">
 
-            <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-cart-outline"></i> </button>
+            <button class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
         </ion-nav-buttons>
     </ion-nav-bar>
 
@@ -32,7 +32,7 @@
                         <img ng-src="{{ product.image }}" style="width : {{productWidth}}px; height: auto;" ng-click="showProductDetail(product)"/>
 
                         <div class="row item" ng-click="showProductDetail(product)">
-                            <p>{{ product.name }}</p>
+                            <p style="font-size: .9em">{{ product.name }}</p>
                         </div>
                         <div class="row row-center">
                             <h4 class="assertive">¥{{product.price}}</h4>

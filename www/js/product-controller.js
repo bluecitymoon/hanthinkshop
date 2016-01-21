@@ -23,8 +23,20 @@ angular.module('starter.product-controller', [])
             $ionicHistory.goBack();
         };
 
+        $scope.gotoCatelogTab = function() {
+            $state.go('tab.cart');
+        }
+
     })
     .controller('ProductDetailCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
+
+        $scope.showParameters = false;
+
+        $scope.showProductDetailByTitle = function(index) {
+
+            $scope.showParameters = (index == 1);
+
+        };
 
         $scope.product = {
             name : '澳贝琳 2015秋冬新款韩版修身显瘦中长款毛呢大衣女外套  8615  灰色 L', price: 129.00,
@@ -42,5 +54,17 @@ angular.module('starter.product-controller', [])
         $scope.loading = false;
 
         $scope.screenWidth = $window.innerWidth;
+
+        $scope.gotoCatelogTab = function() {
+            $state.go('tab.cart');
+        };
+
+        $scope.buyNow = function() {
+            $state.go('new-order');
+        };
+
+        $scope.addToShopCart = function(product) {
+            console.debug(product);
+        };
 
     });
