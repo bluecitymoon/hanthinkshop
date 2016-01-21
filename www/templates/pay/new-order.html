@@ -9,7 +9,7 @@
     <ion-content>
 
         <ion-list class="wrapping-list">
-            <ion-item class="item-icon-right royal-900-border step1" style="margin-top: 10px; background-color: #fffaf3">
+            <ion-item class="item-icon-right address" style="margin-top: 10px; background-color: #fffaf3" ng-click="openAddressListPage()">
 
                 <div class="row">
                     <h3 class="col-50"><i class="ion ion-ios-person-outline assertive"></i> 江李明</h3> <p class="col-50 assertive"> <i class="ion ion-android-phone-portrait"></i>13762234432</p>
@@ -18,10 +18,48 @@
                 <p style="margin-right : 3em; font-size: .8em">上海浦东新区城区丰和路1号港务大厦23楼沃纳信息部</p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
 
-                <b class="s1-borderT"></b>
-                <b class="s1-borderB"></b>
+                <b class="top-border"></b>
+                <b class="bottom-border"></b>
+
             </ion-item>
+
+            <div class="item-divider-ios small-divider"></div>
+
+            <ion-item class="item-thumbnail-left" ng-repeat="product in orderedProducts">
+                <img ng-src="{{product.image}}">
+                <h4>{{product.name}}</h4>
+                <p><i class="ion ion-ios-close-empty"></i> {{product.count}} </p>
+                <p style="color: #F44336 !important;">¥{{product.price}}</p>
+            </ion-item>
+
+            <div class="item-divider-ios small-divider"></div>
+            <ion-item class="item-icon-right">
+
+                <i class="ion ion-card assertive"></i>支付方式
+                <span class="item-note">
+                微信支付
+                </span>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <div class="item-divider-ios small-divider"></div>
+
+            <ion-item class="item-icon-right">
+
+                <i class="ion ion-android-car assertive"></i> 送货方式
+                <span class="item-note">
+                厂家送货
+                </span>
+
+            </ion-item>
+
+            <div class="item-divider-ios small-divider"></div>
+
         </ion-list>
 
+        <div class="padding">
+            <button class="button button-block button-balanced"> 确认支付 </button>
+        </div>
     </ion-content>
 </ion-view>

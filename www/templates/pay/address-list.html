@@ -1,0 +1,39 @@
+<ion-modal-view>
+
+    <ion-header-bar align-title="left" class="bar-stable">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeSelectAddressDialog()"><i class="icon ion-ios-arrow-left"></i></button>
+        </div>
+        <h1 class="title">收货地址</h1>
+
+    </ion-header-bar>
+
+    <ion-content>
+
+        <ion-list>
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="address in userAddresses" type="item-text-wrap" ng-click="selectAddressForShipping(address)">
+                <p>{{address}}</p>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+
+        <div class="list" ng-if="!userAddresses || userAddresses.length == 0" style="vertical-align: middle !important;">
+            <br><br><br><br><br><br>
+            <div class="row">
+                <div class="col col-25"></div>
+                <div class="col col-50">
+
+                </div>
+                <div class="col col-25"></div>
+            </div>
+            <div class="row" style="margin-top: 1rem;">
+                <div class="col col-25"></div>
+                <div class="col col-50" style="text-align: center; color: #D8D8D8; font-size: 1rem">
+                    没有数据
+                </div>
+                <div class="col col-25"></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>
