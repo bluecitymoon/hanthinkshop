@@ -1,39 +1,39 @@
 angular.module('starter.services', [])
 
-  .factory('Camera', ['$q', function($q) {
+    .factory('Camera', ['$q', function ($q) {
 
-    return {
-      getPicture: function(options) {
-        var q = $q.defer();
+        return {
+            getPicture: function (options) {
+                var q = $q.defer();
 
-        navigator.camera.getPicture(function(result) {
-          // Do any magic you need
-          q.resolve(result);
-        }, function(err) {
-          q.reject(err);
-        }, options);
+                navigator.camera.getPicture(function (result) {
+                    // Do any magic you need
+                    q.resolve(result);
+                }, function (err) {
+                    q.reject(err);
+                }, options);
 
-        return q.promise;
-      }
-    }
-  }])
+                return q.promise;
+            }
+        }
+    }])
 
-  .factory('Location', ['$q', function($q) {
+    .factory('Location', ['$q', function ($q) {
 
-    return {
-      getLocation: function() {
-        var q = $q.defer();
+        return {
+            getLocation: function () {
+                var q = $q.defer();
 
-        navigator.geolocation.getCurrentPosition(function(position) {
-          q.resolve(position);
-        }, function(error) {
-          q.reject(error);
-        });
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    q.resolve(position);
+                }, function (error) {
+                    q.reject(error);
+                });
 
-        return q.promise;
-      }
-    }
-  }])
+                return q.promise;
+            }
+        }
+    }])
 
     .factory('AuthenticationService', function ($http, HanthinkApiAddress, $rootScope, UtilService, StorageService) {
 
@@ -62,28 +62,28 @@ angular.module('starter.services', [])
 
         function getUserIpInformation(user, callback) {
 
-          $http({
-            url: HanthinkApiAddress + 'jsyanzheng/bangding',
-            data: {bangdingma: user.code},
-            method: 'POST'
-          }).success(function (response, status, headers, config) {
+            $http({
+                url: HanthinkApiAddress + 'jsyanzheng/bangding',
+                data: {bangdingma: user.code},
+                method: 'POST'
+            }).success(function (response, status, headers, config) {
 
-            StorageService.setObject('customer_info', {ip: response, code: user.code});
-            ServerRoot = response;
+                StorageService.setObject('customer_info', {ip: response, code: user.code});
+                ServerRoot = response;
 
-            if (response && callback) {
-              callback();
-            }
+                if (response && callback) {
+                    callback();
+                }
 
-            //$rootScope.$emit('user-server-ip-loaded-event', {ip: response});
+                //$rootScope.$emit('user-server-ip-loaded-event', {ip: response});
 
-          }).error(function (response, status, headers, config) {
+            }).error(function (response, status, headers, config) {
 
-            UtilService.showAlert("服务器在鉴定你的公司代码时出错，可能是<b class='assertive'>无效的</b>公司代码");
+                UtilService.showAlert("服务器在鉴定你的公司代码时出错，可能是<b class='assertive'>无效的</b>公司代码");
 
-            UtilService.closeLoadingScreen();
+                UtilService.closeLoadingScreen();
 
-          });
+            });
         }
 
         return {
@@ -92,9 +92,12 @@ angular.module('starter.services', [])
         }
     })
 
-    .factory('DataService', function ($http,  $rootScope, UtilService) {
+    .factory('DataService', function ($http, $rootScope, UtilService) {
 
-        var userData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token};
+        var userData = {
+            username: UtilService.getCurrentLoggedInUser().username,
+            token: UtilService.getCurrentLoggedInUser().token
+        };
 
         function getTypes() {
 
@@ -123,7 +126,11 @@ angular.module('starter.services', [])
 
             $http({
                 url: ServerRoot + 'danju/getdanjugeshi',
-                data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, id: datatypeid},
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    id: datatypeid
+                },
                 method: 'POST'
             }).success(function (response, status, headers, config) {
 
@@ -162,7 +169,11 @@ angular.module('starter.services', [])
             //copiedUserData.cankaodangan = cankaodangan;
             $http({
                 url: ServerRoot + 'canzhaoshuju/getzhubiaoshuju',
-                data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, id: id},
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    id: id
+                },
                 method: 'POST'
             }).success(function (response, status, headers, config) {
 
@@ -187,7 +198,7 @@ angular.module('starter.services', [])
             UtilService.showLoadingScreen();
 
             var primaryParam = [];
-            angular.forEach(primaryTableData, function(value, i) {
+            angular.forEach(primaryTableData, function (value, i) {
 
                 if (value.morenzhi) {
                     var o = {id: value.id, morenzhi: value.morenzhi};
@@ -197,10 +208,10 @@ angular.module('starter.services', [])
             });
 
             var secondaryParam = [];
-            angular.forEach(secondaryTableData, function(value, i) {
+            angular.forEach(secondaryTableData, function (value, i) {
 
                 var singleSecondary = [];
-                angular.forEach(value, function(single, j) {
+                angular.forEach(value, function (single, j) {
 
                     if (single.morenzhi) {
                         var o = {id: single.id, morenzhi: single.morenzhi};
@@ -213,7 +224,12 @@ angular.module('starter.services', [])
                 }
             });
 
-            var postData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, zhubiao: JSON.stringify(primaryParam), zibiao: JSON.stringify(secondaryParam)};
+            var postData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                zhubiao: JSON.stringify(primaryParam),
+                zibiao: JSON.stringify(secondaryParam)
+            };
 
             console.debug(postData);
 
@@ -233,7 +249,7 @@ angular.module('starter.services', [])
 
                 } else {
 
-                    if(successCallback) {
+                    if (successCallback) {
                         successCallback();
                     }
                 }
@@ -243,47 +259,57 @@ angular.module('starter.services', [])
             });
         }
 
-    function loadFinalOptionResultWithCategory(conditionId, optionId, keyword, pageNumber, clientType) {
-      UtilService.showLoadingScreen();
+        function loadFinalOptionResultWithCategory(conditionId, optionId, keyword, pageNumber, clientType) {
+            UtilService.showLoadingScreen();
 
-      var url = ServerRoot + 'canzhaoshuju/getshujulbfy';
-      if (clientType && clientType == 'child') {
-        url = ServerRoot + 'canzhaoshuju/getshujulbfy';
-      }
-      $http({
-        url: url,
-        data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, id: conditionId, leibieid: optionId, guanjianzi: keyword, yeshu: pageNumber},
-        method: 'POST'
-      }).success(function (response, status, headers, config) {
+            var url = ServerRoot + 'canzhaoshuju/getshujulbfy';
+            if (clientType && clientType == 'child') {
+                url = ServerRoot + 'canzhaoshuju/getshujulbfy';
+            }
+            $http({
+                url: url,
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    id: conditionId,
+                    leibieid: optionId,
+                    guanjianzi: keyword,
+                    yeshu: pageNumber
+                },
+                method: 'POST'
+            }).success(function (response, status, headers, config) {
 
-        if (response.code) {
+                if (response.code) {
 
-          UtilService.closeLoadingScreen();
+                    UtilService.closeLoadingScreen();
 
-          UtilService.showAlert(response.message);
+                    UtilService.showAlert(response.message);
 
-        } else {
-          $rootScope.$emit('search-option-detail-load-event', {detailOptions: response});
-        }
+                } else {
+                    $rootScope.$emit('search-option-detail-load-event', {detailOptions: response});
+                }
 
-      }).error(function (response, status, headers, config) {
-        UtilService.handleCommonServerError(response, status);
-      });
-    };
+            }).error(function (response, status, headers, config) {
+                UtilService.handleCommonServerError(response, status);
+            });
+        };
         return {
             getTypes: getTypes,
             loadDataSearchConditions: loadDataSearchConditions,
             setCurrentDataType: setCurrentDataType,
             getCurrentDataType: getCurrentDataType,
             loadDataAutocompleteOptions: loadDataAutocompleteOptions,
-          loadFinalOptionResultWithCategory: loadFinalOptionResultWithCategory,
+            loadFinalOptionResultWithCategory: loadFinalOptionResultWithCategory,
             saveData: saveData
         }
     })
 
-    .factory('ReportService', function ($http,  $rootScope, UtilService) {
+    .factory('ReportService', function ($http, $rootScope, UtilService) {
 
-        var userData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token};
+        var userData = {
+            username: UtilService.getCurrentLoggedInUser().username,
+            token: UtilService.getCurrentLoggedInUser().token
+        };
 
         function getTypes() {
             UtilService.showLoadingScreen();
@@ -311,7 +337,11 @@ angular.module('starter.services', [])
 
             $http({
                 url: ServerRoot + 'report/getreporttj',
-                data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, bbid: reportid},
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    bbid: reportid
+                },
                 method: 'POST'
             }).success(function (response, status, headers, config) {
 
@@ -341,7 +371,12 @@ angular.module('starter.services', [])
             //copiedUserData.cankaodangan = cankaodangan;
             $http({
                 url: ServerRoot + 'canzhaoshuju/getshuju',
-                data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, id: id, shujuleixing: type},
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    id: id,
+                    shujuleixing: type
+                },
                 method: 'POST'
             }).success(function (response, status, headers, config) {
 
@@ -365,8 +400,16 @@ angular.module('starter.services', [])
         function loadFinalOptionResultWithCategory(conditionId, optionId, keyword, pageNumber, type, referenceParentValue) {
             UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token,
-              id: conditionId, leibieid: optionId, guanjianzi: keyword, yeshu: pageNumber, shujuleixing: type, zhubiaocanshu: referenceParentValue};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                id: conditionId,
+                leibieid: optionId,
+                guanjianzi: keyword,
+                yeshu: pageNumber,
+                shujuleixing: type,
+                zhubiaocanshu: referenceParentValue
+            };
             console.debug(JSON.stringify(queryData));
 
             //getshujulbfy
@@ -384,7 +427,7 @@ angular.module('starter.services', [])
 
                 } else {
                     $rootScope.$emit('search-option-detail-load-event', {detailOptions: response});
-                  console.debug(response);
+                    console.debug(response);
                 }
 
             }).error(function (response, status, headers, config) {
@@ -399,13 +442,20 @@ angular.module('starter.services', [])
             if (page) {
                 pageNumber = page;
             }
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, id: id, guanjianzi: keyword, yeshu: pageNumber, shujuleixing: type};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                id: id,
+                guanjianzi: keyword,
+                yeshu: pageNumber,
+                shujuleixing: type
+            };
             console.debug(JSON.stringify(queryData));
 
-	        var url = 'canzhaoshuju/getmohucx';
-	        //if ( type) {
-		      //   url = 'canzhaoshuju/getzhubiaoshujulbfy';
-	        //}
+            var url = 'canzhaoshuju/getmohucx';
+            //if ( type) {
+            //   url = 'canzhaoshuju/getzhubiaoshujulbfy';
+            //}
 
             $http({
                 url: ServerRoot + url,
@@ -434,16 +484,21 @@ angular.module('starter.services', [])
             UtilService.showLoadingScreen();
             var conditionData = [];
 
-            angular.forEach(conditions, function(value, key) {
+            angular.forEach(conditions, function (value, key) {
 
-                if(value.moren1 || value.moren2) {
+                if (value.moren1 || value.moren2) {
                     var singleCondition = {id: value.id, moren1: value.moren1, moren2: value.moren2};
                     conditionData.push(singleCondition);
                 }
             });
 
             var conditionDataJSONstring = JSON.stringify(conditionData).replace(/"/g, '\'');
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, yeshu: pageNumber, tiaojian: conditionDataJSONstring};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                yeshu: pageNumber,
+                tiaojian: conditionDataJSONstring
+            };
 
             $http({
                 url: ServerRoot + 'report/getreportdata',
@@ -471,6 +526,7 @@ angular.module('starter.services', [])
         };
 
         var lastSearchCondition = {};
+
         function setLastSearchCondition(searchCondition) {
 
             lastSearchCondition = searchCondition;
@@ -482,6 +538,7 @@ angular.module('starter.services', [])
         }
 
         var lastSelectedCondition = {};
+
         function getCurrentSelectedCondition() {
             return lastSelectedCondition;
         }
@@ -508,6 +565,7 @@ angular.module('starter.services', [])
     factory('UtilService', function ($ionicLoading, $ionicPopup, StorageService) {
 
         var currentUser = null;
+
         function getCurrentLoggedInUser() {
             if (currentUser) {
                 return currentUser;
@@ -519,7 +577,7 @@ angular.module('starter.services', [])
         }
 
         function setCurrentLoggedInUser(user) {
-          currentUser = user;
+            currentUser = user;
         }
 
         function showLoadingScreen(message) {
@@ -545,9 +603,9 @@ angular.module('starter.services', [])
                 okText: '确定',
                 okType: 'button button-block button-positive'
             }).then(function () {
-              if (callback) {
-                callback();
-              }
+                if (callback) {
+                    callback();
+                }
 
             });
 
@@ -565,7 +623,8 @@ angular.module('starter.services', [])
         }
 
         var icons = ['ion-ios-list-outline', 'ion-ios-book', 'ion-ios-compose-outline', 'ion-ios-paper-outline', 'ion-ios-calendar-outline', 'ion-ios-albums-outline',
-        'ion-ios-briefcase-outline', 'ion-android-calendar', 'ion-android-cloud-outline', 'ion-bag'];
+            'ion-ios-briefcase-outline', 'ion-android-calendar', 'ion-android-cloud-outline', 'ion-bag'];
+
         function getIconByIndex(index) {
 
             if (index > icons.length) {
@@ -575,9 +634,10 @@ angular.module('starter.services', [])
         }
 
         var colors = ['positive', 'balanced', 'assertive', 'royal'];
+
         function getRandomColorName() {
 
-            var index = Math.floor((Math.random() * 10) / 3) ;
+            var index = Math.floor((Math.random() * 10) / 3);
 
             return colors[index];
         }
@@ -592,7 +652,7 @@ angular.module('starter.services', [])
             showLoadingScreen: showLoadingScreen,
             closeLoadingScreen: closeLoadingScreen,
             showAlert: showAlert,
-            handleCommonServerError : handleCommonServerError,
+            handleCommonServerError: handleCommonServerError,
             getIconByIndex: getIconByIndex,
             getRandomColorName: getRandomColorName,
             getCurrentLoggedInUser: getCurrentLoggedInUser,
@@ -629,18 +689,25 @@ angular.module('starter.services', [])
         };
     })
 
-    .factory('Chats', function (UtilService,  $rootScope, $http) {
+    .factory('Chats', function (UtilService, $rootScope, $http) {
 
         function loadAllMyChats(page) {
 
             UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, yeshu: page};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                yeshu: page
+            };
             console.debug(JSON.stringify(queryData));
 
             $http({
                 url: ServerRoot + 'xiaoxi/getxiaoxizhubiao',
-                data: {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token},
+                data: {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token
+                },
                 method: 'POST'
             }).success(function (response, status, headers, config) {
 
@@ -664,7 +731,13 @@ angular.module('starter.services', [])
 
             UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, fasongren: chatId, yeshu: pageNumber, leixing: type};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                fasongren: chatId,
+                yeshu: pageNumber,
+                leixing: type
+            };
             console.debug(JSON.stringify(queryData));
 
             $http({
@@ -693,7 +766,11 @@ angular.module('starter.services', [])
 
             UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, xiaoxiid: message.id};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                xiaoxiid: message.id
+            };
             console.debug(JSON.stringify(queryData));
 
             $http({
@@ -720,7 +797,13 @@ angular.module('starter.services', [])
 
             UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, xiaoxiid: id, jiegou : flag, fujiaxinxi : content};
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                xiaoxiid: id,
+                jiegou: flag,
+                fujiaxinxi: content
+            };
             console.debug(JSON.stringify(queryData));
 
             $http({
@@ -749,38 +832,43 @@ angular.module('starter.services', [])
 
         function sendMessage(content, target) {
 
-          var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, lianxiren: target, neirong : content};
-          console.debug(JSON.stringify(queryData));
+            var queryData = {
+                username: UtilService.getCurrentLoggedInUser().username,
+                token: UtilService.getCurrentLoggedInUser().token,
+                lianxiren: target,
+                neirong: content
+            };
+            console.debug(JSON.stringify(queryData));
 
-          $http({
-            url: ServerRoot + 'xiaoxi/addxiaoxi',
-            data: queryData,
-            method: 'POST'
-          }).success(function (response, status, headers, config) {
+            $http({
+                url: ServerRoot + 'xiaoxi/addxiaoxi',
+                data: queryData,
+                method: 'POST'
+            }).success(function (response, status, headers, config) {
 
-            if (response.code) {
+                if (response.code) {
 
-              UtilService.closeLoadingScreen();
+                    UtilService.closeLoadingScreen();
 
-              UtilService.showAlert(response.message);
+                    UtilService.showAlert(response.message);
 
-            } else {
-              $rootScope.$emit('message-sent-event', {result: response});
+                } else {
+                    $rootScope.$emit('message-sent-event', {result: response});
 
-            }
+                }
 
-          }).error(function (response, status, headers, config) {
-            UtilService.handleCommonServerError(response, status);
-          });
+            }).error(function (response, status, headers, config) {
+                UtilService.handleCommonServerError(response, status);
+            });
         }
 
         return {
 
-            loadAllMyChats : loadAllMyChats,
-            loadMessagesFromChat : loadMessagesFromChat,
-            loadApproveMessageDetails : loadApproveMessageDetails,
-            approve : approve,
-            sendMessage : sendMessage
+            loadAllMyChats: loadAllMyChats,
+            loadMessagesFromChat: loadMessagesFromChat,
+            loadApproveMessageDetails: loadApproveMessageDetails,
+            approve: approve,
+            sendMessage: sendMessage
 
         };
     })
@@ -790,332 +878,359 @@ angular.module('starter.services', [])
         var lastCustomer = {};
         return {
 
-          submitFeedback: function(feedback) {
+            submitFeedback: function (feedback) {
 
-            var code = StorageService.getObject("customer_info").code;
-            UtilService.showLoadingScreen();
+                var code = StorageService.getObject("customer_info").code;
+                UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, kehuma: code, neirong: feedback.comments};
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    kehuma: code,
+                    neirong: feedback.comments
+                };
 
-            console.debug(JSON.stringify(queryData));
+                console.debug(JSON.stringify(queryData));
 
-            $http({
-              url: ServerRoot + 'jsyanzheng/yijianfankun',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
+                $http({
+                    url: ServerRoot + 'jsyanzheng/yijianfankun',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
 
-              if (response.code) {
+                    if (response.code) {
 
-                UtilService.closeLoadingScreen();
+                        UtilService.closeLoadingScreen();
 
-                UtilService.showAlert(response.message);
+                        UtilService.showAlert(response.message);
 
-              } else {
-                $rootScope.$emit('feedback-uploaded-event', {tasks: response});
-                console.debug(response);
-              }
+                    } else {
+                        $rootScope.$emit('feedback-uploaded-event', {tasks: response});
+                        console.debug(response);
+                    }
 
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
 
-          },
+            },
 
-          submitBroadcast: function(broadcast) {
+            submitBroadcast: function (broadcast) {
 
-            UtilService.showLoadingScreen();
+                UtilService.showLoadingScreen();
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, neirong: broadcast.comments};
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    neirong: broadcast.comments
+                };
 
-            console.debug(JSON.stringify(queryData));
+                console.debug(JSON.stringify(queryData));
 
-            $http({
-              url: ServerRoot + 'xiaoxi/addgonggao',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
+                $http({
+                    url: ServerRoot + 'xiaoxi/addgonggao',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
 
-              if (response.code) {
+                    if (response.code) {
 
-                UtilService.closeLoadingScreen();
+                        UtilService.closeLoadingScreen();
 
-                UtilService.showAlert(response.message);
+                        UtilService.showAlert(response.message);
 
-              } else {
-                $rootScope.$emit('broadcast-uploaded-event', {message: response});
-                console.debug(response);
-              }
+                    } else {
+                        $rootScope.$emit('broadcast-uploaded-event', {message: response});
+                        console.debug(response);
+                    }
 
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
 
-          },
+            },
 
-          uploadUserAvatar: function(imageData) {
+            uploadUserAvatar: function (imageData) {
 
-            UtilService.showLoadingScreen('上传中');
+                UtilService.showLoadingScreen('上传中');
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, touxiang: imageData};
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    touxiang: imageData
+                };
 
-            console.debug(JSON.stringify(queryData));
+                console.debug(JSON.stringify(queryData));
 
-            $http({
-              url: ServerRoot + 'xiaoxi/settouxiang',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
+                $http({
+                    url: ServerRoot + 'xiaoxi/settouxiang',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
 
-              if (response.code) {
+                    if (response.code) {
 
-                UtilService.closeLoadingScreen();
+                        UtilService.closeLoadingScreen();
 
-                UtilService.showAlert(response.message);
+                        UtilService.showAlert(response.message);
 
-              } else {
-                $rootScope.$emit('user-avatar-uploaded-event', {avatar: response});
-                console.debug(response);
-              }
+                    } else {
+                        $rootScope.$emit('user-avatar-uploaded-event', {avatar: response});
+                        console.debug(response);
+                    }
 
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
 
-          },
+            },
 
-          loadTasks: function(page, customerNameKeyword) {
+            loadTasks: function (page, customerNameKeyword) {
 
-              UtilService.showLoadingScreen();
-             // {"username":"admin","token":"0DPiKuNIrrVmD8IUCuw1hQxNqZc=","yeshu":1,"danwei":"沃"}
-              var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, danwei: customerNameKeyword, yeshu: page};
-              console.debug(JSON.stringify(queryData));
+                UtilService.showLoadingScreen();
+                // {"username":"admin","token":"0DPiKuNIrrVmD8IUCuw1hQxNqZc=","yeshu":1,"danwei":"沃"}
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    danwei: customerNameKeyword,
+                    yeshu: page
+                };
+                console.debug(JSON.stringify(queryData));
 
-              $http({
-                url: ServerRoot + 'waiqin/getrenwu',
-                data: queryData,
-                method: 'POST'
-              }).success(function (response, status, headers, config) {
+                $http({
+                    url: ServerRoot + 'waiqin/getrenwu',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
 
-                if (response.code) {
+                    if (response.code) {
 
-                  UtilService.closeLoadingScreen();
+                        UtilService.closeLoadingScreen();
 
-                  UtilService.showAlert(response.message);
+                        UtilService.showAlert(response.message);
 
-                } else {
-                  $rootScope.$emit('task-list-load-event', {tasks: response});
-                  console.debug(response);
+                    } else {
+                        $rootScope.$emit('task-list-load-event', {tasks: response});
+                        console.debug(response);
+                    }
+
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
+
+            },
+
+            loadJobUsers: function () {
+
+                UtilService.showLoadingScreen();
+
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token
+                };
+                console.debug(JSON.stringify(queryData));
+
+                $http({
+                    url: ServerRoot + 'waiqin/getjihuayonghu',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
+
+                    if (response.code) {
+
+                        UtilService.closeLoadingScreen();
+
+                        UtilService.showAlert(response.message);
+
+                    } else {
+                        $rootScope.$emit('job-users-load-event', {users: response});
+                        console.debug(response);
+                    }
+
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
+
+            },
+
+
+            //waiqin/ addkehu(string username, string token,string jiancheng,string quancheng,string dizhi,string dianhua,string lianxiren,string jd,string wd)。采集客户gps信息。
+            createNewCustomer: function (customer) {
+
+                UtilService.showLoadingScreen();
+
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    jd: "" + customer.lng,
+                    wd: "" + customer.lat,
+                    dizhi: customer.address,
+                    jiancheng: customer.shortName,
+                    quancheng: customer.fullName,
+                    dianhua: customer.phoneNumber,
+                    lianxiren: customer.contactor
+                };
+
+                $http({
+                    url: ServerRoot + 'waiqin/addkehu',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
+
+                    if (response.code) {
+
+                        UtilService.closeLoadingScreen();
+
+                        UtilService.showAlert(response.message);
+
+                    } else {
+
+                        $rootScope.$emit('new_customer_saved');
+
+                    }
+
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
+            },
+
+
+            createNewTask: function (task) {
+                UtilService.showLoadingScreen();
+
+                var customerData = [];
+                angular.forEach(task.customers, function (value, i) {
+                    customerData.push({kehu: value.kehu});
+                });
+
+                var vistDateFullString = $filter('date')(task.visitDate, 'yyyy-MM-dd');
+
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    riqi: vistDateFullString,
+                    danweizhu: JSON.stringify(customerData),
+                    yonghu: task.user,
+                    leixing: task.type,
+                    neirong: task.content
+
+                };
+
+                console.debug(JSON.stringify(queryData));
+
+                $http({
+                    url: ServerRoot + 'waiqin/renwuzhiding',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
+
+                    if (response.code) {
+
+                        UtilService.closeLoadingScreen();
+
+                        UtilService.showAlert(response.message);
+
+                    } else {
+
+                        $rootScope.$emit('new_task_created');
+
+                    }
+
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
+            },
+            //qiandao(string username, string token, string jd, string wd,string dizhi ,string leixing)
+            userWorkSign: function (position, type, address) {
+
+                UtilService.showLoadingScreen();
+
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    jd: "" + position.lng,
+                    wd: "" + position.lat,
+                    dizhi: address,
+                    leixing: type
+                };
+                console.debug(JSON.stringify(queryData));
+
+                $http({
+                    url: ServerRoot + 'waiqin/qiandao',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
+
+                    if (response.code) {
+
+                        UtilService.closeLoadingScreen();
+
+                        UtilService.showAlert(response.message);
+
+                    } else {
+                        UtilService.closeLoadingScreen();
+
+                        UtilService.showAlert('操作成功！');
+                        console.debug(response);
+                    }
+
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
+
+            },
+
+            setLastCustomer: function (customer) {
+                lastCustomer = customer;
+            },
+
+            getLastCustomer: function () {
+                return lastCustomer;
+            },
+
+            //waiqin/ waiqinzhixing(string username, string token, string fujian, string jd, string wd, string dizhi, string riqi, string danweimingcheng, string beizhu,string renwuid,string wc).
+            executeTask: function (url, taskId, lng, lat, address, createDate, companyName, comments, finished) {
+
+                if (!taskId) {
+                    taskId = -1;
                 }
+                UtilService.showLoadingScreen();
 
-              }).error(function (response, status, headers, config) {
-                UtilService.handleCommonServerError(response, status);
-              });
+                var queryData = {
+                    username: UtilService.getCurrentLoggedInUser().username,
+                    token: UtilService.getCurrentLoggedInUser().token,
+                    fujian: url,
+                    jd: lng,
+                    wd: lat,
+                    dizhi: address,
+                    riqi: createDate,
+                    danweimingcheng: companyName,
+                    beizhu: comments,
+                    renwuid: taskId,
+                    wc: finished
+                };
+                console.debug(JSON.stringify(queryData));
 
-            },
+                $http({
+                    url: ServerRoot + 'waiqin/waiqinzhixing',
+                    data: queryData,
+                    method: 'POST'
+                }).success(function (response, status, headers, config) {
 
-          loadJobUsers: function() {
+                    if (response) {
 
-            UtilService.showLoadingScreen();
+                        UtilService.closeLoadingScreen();
+                        UtilService.showAlert(response);
 
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token};
-            console.debug(JSON.stringify(queryData));
+                    } else {
 
-            $http({
-              url: ServerRoot + 'waiqin/getjihuayonghu',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
+                        UtilService.showAlert("操作成功");
+                        $rootScope.$emit('task-finished-event', {result: response});
 
-              if (response.code) {
+                    }
 
-                UtilService.closeLoadingScreen();
-
-                UtilService.showAlert(response.message);
-
-              } else {
-                $rootScope.$emit('job-users-load-event', {users: response});
-                console.debug(response);
-              }
-
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
-
-          },
-
-
-          //waiqin/ addkehu(string username, string token,string jiancheng,string quancheng,string dizhi,string dianhua,string lianxiren,string jd,string wd)。采集客户gps信息。
-          createNewCustomer: function(customer) {
-
-            UtilService.showLoadingScreen();
-
-            var queryData = {
-              username: UtilService.getCurrentLoggedInUser().username,
-              token: UtilService.getCurrentLoggedInUser().token,
-              jd: "" + customer.lng,
-              wd: "" + customer.lat,
-              dizhi: customer.address,
-              jiancheng: customer.shortName,
-              quancheng: customer.fullName,
-              dianhua: customer.phoneNumber,
-              lianxiren: customer.contactor
-            };
-
-            $http({
-              url: ServerRoot + 'waiqin/addkehu',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
-
-              if (response.code) {
-
-                UtilService.closeLoadingScreen();
-
-                UtilService.showAlert(response.message);
-
-              } else {
-
-                $rootScope.$emit('new_customer_saved');
-
-              }
-
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
-          },
-
-
-          createNewTask: function(task) {
-            UtilService.showLoadingScreen();
-
-            var customerData = [];
-            angular.forEach(task.customers, function(value, i) {
-              customerData.push({kehu: value.kehu});
-            });
-
-            var vistDateFullString = $filter('date')(task.visitDate, 'yyyy-MM-dd');
-
-            var queryData = {
-              username: UtilService.getCurrentLoggedInUser().username,
-              token: UtilService.getCurrentLoggedInUser().token,
-              riqi: vistDateFullString,
-              danweizhu: JSON.stringify(customerData),
-              yonghu: task.user,
-              leixing: task.type,
-              neirong: task.content
-
-            };
-
-            console.debug(JSON.stringify(queryData));
-
-            $http({
-              url: ServerRoot + 'waiqin/renwuzhiding',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
-
-              if (response.code) {
-
-                UtilService.closeLoadingScreen();
-
-                UtilService.showAlert(response.message);
-
-              } else {
-
-                $rootScope.$emit('new_task_created');
-
-              }
-
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
-          },
-          //qiandao(string username, string token, string jd, string wd,string dizhi ,string leixing)
-          userWorkSign: function(position, type, address) {
-
-            UtilService.showLoadingScreen();
-
-            var queryData = {username: UtilService.getCurrentLoggedInUser().username, token: UtilService.getCurrentLoggedInUser().token, jd: "" + position.lng, wd: "" + position.lat, dizhi: address, leixing: type};
-            console.debug(JSON.stringify(queryData));
-
-            $http({
-              url: ServerRoot + 'waiqin/qiandao',
-              data: queryData,
-              method: 'POST'
-            }).success(function (response, status, headers, config) {
-
-              if (response.code) {
-
-                UtilService.closeLoadingScreen();
-
-                UtilService.showAlert(response.message);
-
-              } else {
-                UtilService.closeLoadingScreen();
-
-                UtilService.showAlert('操作成功！');
-                console.debug(response);
-              }
-
-            }).error(function (response, status, headers, config) {
-              UtilService.handleCommonServerError(response, status);
-            });
-
-          },
-
-            setLastCustomer : function(customer) {
-              lastCustomer = customer;
-            },
-
-            getLastCustomer : function () {
-              return lastCustomer;
-            },
-
-          //waiqin/ waiqinzhixing(string username, string token, string fujian, string jd, string wd, string dizhi, string riqi, string danweimingcheng, string beizhu,string renwuid,string wc).
-            executeTask: function(url, taskId, lng, lat, address, createDate, companyName, comments, finished) {
-
-              if (!taskId) {
-                taskId = -1;
-              }
-              UtilService.showLoadingScreen();
-
-              var queryData = {
-                username: UtilService.getCurrentLoggedInUser().username,
-                token: UtilService.getCurrentLoggedInUser().token,
-                fujian: url,
-                jd: lng,
-                wd: lat,
-                dizhi: address,
-                riqi: createDate,
-                danweimingcheng: companyName,
-                beizhu: comments,
-                renwuid: taskId,
-                wc: finished
-              };
-              console.debug(JSON.stringify(queryData));
-
-              $http({
-                url: ServerRoot + 'waiqin/waiqinzhixing',
-                data: queryData,
-                method: 'POST'
-              }).success(function (response, status, headers, config) {
-
-                if (response) {
-
-                  UtilService.closeLoadingScreen();
-                  UtilService.showAlert(response);
-
-                } else {
-
-                  UtilService.showAlert("操作成功");
-                  $rootScope.$emit('task-finished-event', {result: response});
-
-                }
-
-              }).error(function (response, status, headers, config) {
-                UtilService.handleCommonServerError(response, status);
-              });
+                }).error(function (response, status, headers, config) {
+                    UtilService.handleCommonServerError(response, status);
+                });
             }
         }
     });

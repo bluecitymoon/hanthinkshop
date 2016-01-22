@@ -1,27 +1,29 @@
 <ion-modal-view>
 
-  <ion-header-bar align-title="left" class="bar-balanced">
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeSelectUserDialog()"><i class="ion-ios-close-empty assertive icon button-large"></i></button>
-    </div>
-    <h1 class="title">选择用户</h1>
+    <ion-header-bar align-title="left" class="bar-balanced">
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeSelectUserDialog()"><i
+                class="ion-ios-close-empty assertive icon button-large"></i></button>
+        </div>
+        <h1 class="title">选择用户</h1>
 
-    <div class="buttons" ng-show="false">
-      <button class="button button-clear" ng-click="toggleMenu()"><i class="ion-android-menu"></i></button>
-    </div>
-  </ion-header-bar>
+        <div class="buttons" ng-show="false">
+            <button class="button button-clear" ng-click="toggleMenu()"><i class="ion-android-menu"></i></button>
+        </div>
+    </ion-header-bar>
 
     <ion-content>
 
-                <ion-list>
-                    <ion-item class="item-remove-animate item-icon-right" ng-repeat="user in users" type="item-text-wrap" ng-click="selectUser(user.dengluming)">
-                        {{user.dengluming}}
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-                    </ion-item>
-                </ion-list>
+        <ion-list>
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="user in users" type="item-text-wrap" ng-click="selectUser(user.dengluming)">
+                {{user.dengluming}}
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
 
         <div class="list" ng-if="!users || users.length == 0" style="vertical-align: middle !important;">
             <br><br><br><br><br><br>
+
             <div class="row">
                 <div class="col col-25"></div>
                 <div class="col col-50">
