@@ -2,7 +2,9 @@ angular.module('starter.product-controller', [])
 
     .controller('ProductListCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
 
-        console.debug($stateParams.categoryid);
+        console.debug('category id = ' + $stateParams.categoryid);
+
+        console.debug('keyword = ' + $stateParams.keyword);
 
         $scope.products = [
             {count: 1, price: 288, name : '美莱香 2015秋冬新款韩版加棉毛呢大衣女外套修身中长款羊毛呢子大衣加厚女装MW888 枣红色加棉 M', image : 'http://m.360buyimg.com/n8/jfs/t2557/184/1007246708/390166/530a5510/56800659N30321307.jpg!q70.jpg'},
@@ -25,7 +27,11 @@ angular.module('starter.product-controller', [])
 
         $scope.gotoCatelogTab = function() {
             $state.go('tab.cart');
-        }
+        };
+
+        $scope.openSearchHistoryModal = function () {
+            $state.go('search-product');
+        };
 
     })
     .controller('ProductDetailCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {

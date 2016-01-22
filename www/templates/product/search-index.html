@@ -1,0 +1,80 @@
+<ion-view title="商品搜索">
+
+    <ion-nav-title>
+        <div class="item item-input-inset tadpole-searchbar-background">
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="商品名称" ng-model="search.keyword" autofocus>
+            </label>
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-bar class="bar-assertive">
+        <ion-nav-buttons side="left" class="button button-clear">
+            <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-arrow-left"></i> </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right" class="button button-clear">
+
+            <button class="button button-small button-clear" ng-click="searchProducts()"><i class="icon ion-ios-search"></i> </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content>
+
+        <div class="item-divider-ios product-detail-divider">
+            <i class="ion-ios-clock-outline balanced"></i> 历史记录
+        </div>
+
+        <ion-list>
+            <ion-item class="item item-icon-right" ng-repeat="keyword in keywordHistoryList" ng-click="gotoProductsPage(keyword.name)" style="font-size: .8em; padding-bottom: .8em; padding-top: 1em;">
+
+                <p>{{keyword.name}}</p>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+            </ion-item>
+        </ion-list>
+
+        <!--
+        <div class="item-divider-ios product-detail-divider">
+            <i class="ion-ios-flame-outline assertive"></i> 热门搜索
+        </div>
+
+        <ion-list>
+            <ion-item class="item item-icon-right" ng-repeat="keyword in hotKeywords">
+
+                <p>{{keyword.name}}</p>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+        -->
+        <div class="padding" ng-show="keywordHistoryList.length > 0">
+            <button class="button button-block button-assertive" ng-click="clearSearchHistory()">
+                清除历史记录
+
+            </button>
+        </div>
+
+        <div class="list" ng-if="!keywordHistoryList || keywordHistoryList.length == 0" style="vertical-align: middle !important;">
+
+            <br><br><br><br><br><br>
+
+            <div class="row">
+                <div class="col col-25"></div>
+                <div class="col col-50"></div>
+                <div class="col col-25"></div>
+            </div>
+
+            <div class="row" style="margin-top: 1rem;">
+                <div class="col col-25"></div>
+                <div class="col col-50" style="text-align: center; color: #D8D8D8; font-size: 1rem">
+                    无查询历史记录
+                </div>
+                <div class="col col-25"></div>
+            </div>
+
+        </div>
+    </ion-content>
+
+</ion-view>

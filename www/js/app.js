@@ -12,7 +12,7 @@ var ServerRoot = '';
 var weekDaysList = ["六", "日", "一", "二", "三", "四", "五"];
 var monthList = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-controller', 'starter.datacontrollers','starter.outsideworkcontroller', 'starter.cart-controller', 'starter.order-controller', 'starter.services', 'ion-tree-list', 'checklist-model', 'angular.filter', 'ti-segmented-control'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-controller', 'starter.datacontrollers','starter.outsideworkcontroller', 'starter.searchcontrollers', 'starter.cart-controller', 'starter.order-controller', 'starter.services', 'ion-tree-list', 'checklist-model', 'angular.filter', 'ti-segmented-control'])
 
     .constant('HanthinkApiAddress', 'http://www.hanthink.cc:808/hanthinkapi/')
 
@@ -100,8 +100,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-cont
                 }
             })
 
+            .state('search-product', {
+                url: '/search-product',
+                templateUrl: 'templates/product/search-index.html',
+                controller: 'SearchProductCtrl'
+
+            })
+
             .state('product-list', {
-                url: '/products/:categoryid',
+                url: '/products/:categoryid/keyword/:keyword',
                 templateUrl: 'templates/product/product-list.html',
                 controller: 'ProductListCtrl'
 

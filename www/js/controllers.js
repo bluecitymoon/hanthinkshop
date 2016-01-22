@@ -54,6 +54,11 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 
             $state.go('product-list', {categoryid : category.id});
         };
+
+        $scope.openSearchHistoryModal = function () {
+            $state.go('search-product');
+        };
+
     })
 
     .controller('LoginCtrl', function ($scope, AuthenticationService, $state, $rootScope, $ionicPopup, UtilService, StorageService, $ionicHistory) {
