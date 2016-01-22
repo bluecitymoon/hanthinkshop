@@ -73,4 +73,11 @@ angular.module('starter.product-controller', [])
             console.debug(product);
         };
 
+    }).controller('PayResultCtrl', function ($scope, $state) {
+
+
+        $scope.goHome = function() {
+            $state.go('tab.home');
+        }
+
     });

@@ -141,6 +141,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.product-cont
                 controller: 'ReportResultCtrl'
 
             })
+
+            .state('pay-result-success', {
+                url: '/payresult',
+                templateUrl: 'templates/pay/pay-success.html',
+                controller: 'PayResultCtrl'
+
+            })
+
             .state('tab.data', {
                 url: '/data',
                 views: {

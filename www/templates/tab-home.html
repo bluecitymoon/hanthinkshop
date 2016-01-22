@@ -1,7 +1,7 @@
 <ion-view title="商城">
 
     <ion-nav-title>
-        <div class="item item-input-inset tadpole-searchbar-background">
+        <div class="item item-input-inset">
             <label class="item-input-wrapper">
                 <i class="icon ion-search placeholder-icon"></i>
                 <input type="text" placeholder="商品名称" ng-model="contact.searchingKeyword" ng-click="openSearchHistoryModal()">
@@ -10,9 +10,6 @@
     </ion-nav-title>
 
     <ion-nav-bar class="bar-assertive">
-        <ion-nav-buttons side="left" class="button button-clear">
-
-        </ion-nav-buttons>
     </ion-nav-bar>
 
     <ion-content>
@@ -20,7 +17,7 @@
         <div class="row" style="padding: 0px !important;">
             <div class="col" style="background-color: rgba(239, 239, 239, 0.4) !important; max-width: 25%">
 
-                <ion-scroll zooming="false" direction="y" style="width: {{screenWidth}}px; height: {{screenHeight}}px; ">
+                <ion-scroll delegate-handle="leftMenu" zooming="false" direction="y" style="width: {{screenWidth}}px; height: {{screenHeight}}px; ">
                     <ion-list>
 
                         <ion-item ng-repeat="category in categories" ng-click="clickFirstLevelCategory(category, $index)" ng-class="{'selected-category' : category.active }">
@@ -40,7 +37,6 @@
                                 <p style="font-size: smaller">{{ detailCategory.name }}</p>
                             </div>
                         </div>
-
                 </div>
 
             </div>

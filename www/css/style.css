@@ -301,3 +301,19 @@ img.profile-pic.right {
 .counter-input {
     height: 24px; width: 2.5em; border: 2px solid #e1e1e1 !important;  text-align: center;
 }
+
+/*::-webkit-input-placeholder {*/
+    /*text-align: center;*/
+/*}*/
+
+/*:-moz-placeholder { /!* Firefox 18- *!/*/
+    /*text-align: center;*/
+/*}*/
+
+/*::-moz-placeholder {  /!* Firefox 19+ *!/*/
+    /*text-align: center;*/
+/*}*/
+
+/*:-ms-input-placeholder {*/
+    /*text-align: center;*/
+/*}*/

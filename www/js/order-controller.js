@@ -29,6 +29,10 @@ angular.module('starter.order-controller', [])
 
         };
 
+        $scope.confirmToPay = function() {
+            $state.go('pay-result-success');
+        };
+
         $scope.productWidth = parseInt(($window.innerWidth - 30) / 2);
 
         $scope.GoBack = function () {

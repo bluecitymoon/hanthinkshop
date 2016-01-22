@@ -195,6 +195,8 @@
     color: $color;
     // Safari placeholder margin issue
     text-indent: $text-indent;
+      padding-left: 5px;
+      font-size: .8em;
   }
 }
 

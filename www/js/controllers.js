@@ -2,7 +2,7 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 
     .controller('HomeCtrl', function ($scope, $state, $window, $ionicScrollDelegate) {
         $scope.categories = [
-            {id: 1, name: '潮流女装'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
+            {id: 1, name: '潮流女装', active: true }, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
                 id: 6,
                 name: '书籍'
             }, {id: 1, name: '食品'}, {id: 2, name: '日常用品'}, {id: 3, name: '军火'}, {id: 4, name: '核武器'}, {
@@ -37,9 +37,9 @@ angular.module('starter.controllers', ['ionic-datepicker'])
 
             var heightToTop = 52 * (index - middleIndex);
             if (heightToTop > 0) {
-                $ionicScrollDelegate.scrollTo(0, heightToTop, true);
+                $ionicScrollDelegate.$getByHandle('leftMenu').scrollTo(0, heightToTop, true);
             } else {
-                $ionicScrollDelegate.scrollTop();
+                $ionicScrollDelegate.$getByHandle('leftMenu').scrollTop();
             }
 
         };

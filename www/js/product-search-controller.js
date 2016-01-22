@@ -2,7 +2,26 @@ angular.module('starter.searchcontrollers', [])
 
     .controller('SearchProductCtrl', function ($scope, $state, $ionicHistory) {
 
-        $scope.keywordHistoryList = [];
+        $scope.keywordHistoryList = [
+            {
+                name: '剃须刀'
+            },
+            {
+                name: '飞机',
+            }, {
+                name: '酱油'
+            }
+        ];
+
+        $scope.hotKeywords = [
+            {
+                name: '剃须刀'
+            },
+            {
+                name: '飞机',
+            }, {
+                name: '酱油'
+            }];
 
         $scope.gotoProductsPage = function (keyword) {
 
