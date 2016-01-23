@@ -11,11 +11,22 @@
     <ion-content>
 
         <ion-list>
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="address in userAddresses" type="item-text-wrap" ng-click="selectAddressForShipping(address)">
-                <p>{{address}}</p>
+
+            <ion-item class="item-icon-right address" style="margin-top: 10px; background-color: #fffaf3"  ng-repeat="address in userAddresses" ng-click="selectAddressForShipping(address)">
+
+                <div class="row">
+                    <b><i class="ion ion-ios-book-outline assertive"></i> 默认地址</b>
+                </div>
+
+                <p style="margin-right : 3em; font-size: .8em">{{address}}</p>
 
                 <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <b class="top-border"></b>
+                <b class="bottom-border"></b>
+
             </ion-item>
+
         </ion-list>
 
         <div class="list" ng-if="!userAddresses || userAddresses.length == 0" style="vertical-align: middle !important;">
