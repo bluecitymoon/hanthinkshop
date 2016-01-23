@@ -15,7 +15,9 @@
         </ion-nav-buttons>
         <ion-nav-buttons side="right" class="button button-clear">
 
-            <button class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
+            <ion-spinner ng-show="addingToCart" icon="ripple" class="spinner-balanced"></ion-spinner>
+
+            <button ng-show="!addingToCart" class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
         </ion-nav-buttons>
     </ion-nav-bar>
 
@@ -55,7 +57,7 @@
 
                         <div class="row row-center">
                             <div class="col text-center">
-                                <button class="button button-balanced button-small"><b>加入购物车</b></button>
+                                <button class="button button-balanced button-small" ng-click="addToShopCart(product)"><b>加入购物车</b></button>
                             </div>
                         </div>
 

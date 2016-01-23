@@ -4,8 +4,8 @@
             <button class="button button-small button-clear" ng-click="GoBack()"><i class="icon ion-ios-arrow-left"></i> </button>
         </ion-nav-buttons>
         <ion-nav-buttons side="right" class="button button-clear">
-
-            <button class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
+            <ion-spinner ng-show="addingToCart" icon="ripple" class="spinner-balanced"></ion-spinner>
+            <button ng-show="!addingToCart" class="button button-small button-clear" ng-click="gotoCatelogTab()"><i class="icon ion-ios-cart-outline"></i> </button>
         </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-title>
@@ -36,7 +36,7 @@
 
                 {{product.name}}
 
-                <h3 class="assertive">¥{{product.price}}</h3>
+                <h3 class="assertive" style="padding-top: .3em">¥{{product.price}}</h3>
 
             </div>
 

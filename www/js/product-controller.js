@@ -1,10 +1,11 @@
 angular.module('starter.product-controller', [])
 
-    .controller('ProductListCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
+    .controller('ProductListCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory, $timeout) {
 
         console.debug('category id = ' + $stateParams.categoryid);
 
         console.debug('keyword = ' + $stateParams.keyword);
+
 
         $scope.products = [
             {
@@ -24,15 +25,25 @@ angular.module('starter.product-controller', [])
                 price: 1288,
                 name: '衣锦霓裳 2015秋冬装新款毛呢大衣女中长款韩版外套 酒红色 M',
                 image: 'http://m.360buyimg.com/n8/jfs/t2476/70/1022892578/288502/2e31b6e5/563dd658N04dc0daa.jpg'
-            },
+            }
         ];
 
+        $scope.addToShopCart = function (product) {
+
+            $scope.addingToCart = true;
+            console.debug(product);
+
+            $timeout(function() {
+                $scope.addingToCart = false;
+            }, 1000);
+        };
 
         $scope.showProductDetail = function (product) {
 
             $state.go('product-detail', {productid: product.id});
 
         };
+
 
         $scope.productWidth = parseInt(($window.innerWidth - 30) / 2);
 
@@ -49,7 +60,7 @@ angular.module('starter.product-controller', [])
         };
 
     })
-    .controller('ProductDetailCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory) {
+    .controller('ProductDetailCtrl', function ($scope, $state, $window, $stateParams, $ionicHistory, $timeout) {
 
         $scope.showParameters = false;
 
@@ -85,7 +96,13 @@ angular.module('starter.product-controller', [])
         };
 
         $scope.addToShopCart = function (product) {
+
+            $scope.addingToCart = true;
             console.debug(product);
+
+            $timeout(function() {
+                $scope.addingToCart = false;
+            }, 3000);
         };
 
     }).controller('PayResultCtrl', function ($scope, $state) {
