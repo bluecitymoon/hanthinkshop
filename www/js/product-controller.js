@@ -71,6 +71,7 @@ angular.module('starter.product-controller', [])
         };
 
         $scope.product = {
+            count: 1,
             name: '澳贝琳 2015秋冬新款韩版修身显瘦中长款毛呢大衣女外套  8615  灰色 L', price: 129.00,
             images: ['http://m.360buyimg.com/n12/jfs/t1954/338/703590005/426226/6ab99248/5621c2e6N08479ba5.jpg!q70.jpg', 'http://m.360buyimg.com/n12/jfs/t2353/29/683076903/303431/25d9b788/5621c2ecN37798741.jpg!q70.jpg', 'http://m.360buyimg.com/n12/jfs/t1963/350/653155165/320351/401f7109/5621c2edNe25f9a79.jpg!q70.jpg',
                 'http://m.360buyimg.com/n12/jfs/t1888/359/691025492/437244/7f9e7bc/5621c2eeN9e909e7d.jpg!q70.jpg', 'http://m.360buyimg.com/n12/jfs/t2224/365/700253363/482764/f61a977f/5621c2efN601d8b10.jpg!q70.jpg'],

@@ -40,6 +40,72 @@
 
             </div>
 
+            <div class="item-divider-ios product-detail-divider"></div>
+
+            <div class="row">
+                <div class="col col-33" style="display: flex; align-items: center;">
+                    数量
+                </div>
+                <div class="col col-77">
+
+                    <div class="row row-center">
+
+                        <button class="button-clear button-small-shop">
+                            <i class="icon ion-minus-round"></i>
+                        </button>
+
+                        <input ng-model="product.count" type="number" min="1" style="height: 24px; width: 2.5em; border: 2px solid #e1e1e1 !important;  text-align: center;"/>
+
+                        <button class="button-clear button-small-shop">
+                            <i class="icon ion-plus-round"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        <div class="row">
+            <div class="col col-25" style="display: flex; align-items: center;">
+                <p>颜色</p>
+            </div>
+            <div class="col col-75">
+
+                <div class="row row-wrap">
+                    <div class="col col-50">
+                        <ion-radio style="border-radius: 5px;" ng-model="choice" ng-value="'A'">红色</ion-radio>
+                    </div>
+                    <div class="col col-50">
+                        <ion-radio style="border-radius: 5px;" ng-model="choice" ng-value="'B'">绿色</ion-radio>
+                    </div>
+                    <div class="col col-50">
+                        <ion-radio style="border-radius: 5px;" ng-model="choice" ng-value="'C'">灰色</ion-radio>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col col-25" style="display: flex; align-items: center;">
+                <p>尺寸</p>
+            </div>
+            <div class="col col-75">
+
+                <div class="row row-wrap">
+                    <div class="col col-50">
+                        <ion-radio style="border-radius: 5px;" ng-model="choice1" ng-value="'M'">M</ion-radio>
+                    </div>
+                    <div class="col col-50">
+                        <ion-radio style="border-radius: 5px;" ng-model="choice1" ng-value="'L'">L</ion-radio>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
             <div class="item-divider-ios product-detail-divider">商品参数</div>
 
             <ion-list>
