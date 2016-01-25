@@ -330,3 +330,7 @@ img.profile-pic.right {
 .detail-item {
     font-size: .8em !important;
 }
+
+.vertical-middle {
+    display: flex; align-items: center;
+}
