@@ -247,9 +247,11 @@ img.profile-pic.right {
 .change-co {
     background-color: #fffaf3;
 }
+
 .change-co {
     background-color: #fffaf3;
 }
+
 .address {
     width: 100%;
     margin-top: 10px;
@@ -258,6 +260,7 @@ img.profile-pic.right {
     background-color: #fff;
     padding: 1.2em .625em 1.2em .625em;
 }
+
 .border-1px {
     position: relative;
 }
@@ -295,25 +298,35 @@ img.profile-pic.right {
 }
 
 .product-detail-divider {
-    padding-top : 15px !important; border-bottom: 1px solid #e1e1e1; border-top: 1px solid #e1e1e1; padding-left: 1em;
+    padding-top: 15px !important;
+    border-bottom: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    padding-left: 1em;
 }
 
 .counter-input {
-    height: 24px; width: 2.5em; border: 2px solid #e1e1e1 !important;  text-align: center;
+    height: 24px;
+    width: 2.5em;
+    border: 2px solid #e1e1e1 !important;
+    text-align: center;
 }
 
 /*::-webkit-input-placeholder {*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
 /*:-moz-placeholder { /!* Firefox 18- *!/*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
 /*::-moz-placeholder {  /!* Firefox 19+ *!/*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
 
 /*:-ms-input-placeholder {*/
-    /*text-align: center;*/
+/*text-align: center;*/
 /*}*/
+
+.detail-item {
+    font-size: .8em !important;
+}

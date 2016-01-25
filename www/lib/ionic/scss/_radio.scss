@@ -14,7 +14,7 @@
 
 .item-radio .item-content {
   /* give some room to the right for the checkmark icon */
-  padding-right: $item-padding * 4;
+  padding-right: $item-padding * 2;
 }
 
 .item-radio .radio-icon {
@@ -24,9 +24,9 @@
   right: 0;
   z-index: $z-index-item-radio;
   visibility: hidden;
-  padding: $item-padding - 2;
-  height: 100%;
-  font-size: 24px;
+  padding: .8em;
+  height: 50%;
+  font-size: .8em;
 }
 
 .item-radio input {
@@ -36,7 +36,7 @@
 
   &:checked + .radio-content .item-content {
     /* style the item content when its checked */
-    background: #f7f7f7;
+    background: $assertive;
   }
 
   &:checked + .radio-content .radio-icon {
